@@ -35,28 +35,44 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Flight Price Prediction</h1>
+										<h1>Customer Spending Prediction Using Machine Learning</h1>
 									</header>
 
-									<span class="image main" style="float: right; max-width: 25%; height: auto; margin-left: 20px;"><img src="images/Flight Price Prediction.jpeg" alt="" /></span>
+									<span class="image main" style="float: right; max-width: 25%; height: auto; margin-left: 20px;"><img src="images/customer Project thumbnail.png" alt="" /></span>
 
-									<p style="text-align: justify;">Flight ticket prices fluctuate based on several factors, making price prediction a challenging task. This project applies machine learning techniques to analyze and predict ticket prices, helping travelers and businesses make informed decisions.</p>
+									<p style="text-align: justify;">The goal of this project is to predict the yearly amount a customer spends based on various behavioral metrics collected from an e-commerce platform. By using linear regression, we analyze how factors like time spent on the app, time spent on the website, average session length, and membership duration influence customer spending.</p>
 									
 
 									<hr class="major" />
 
 									<h2>Project Sections</h2>
 									<h3>Overview</h3>
-									<p style="text-align: justify;">This project uses machine learning to predict flight ticket prices based on various features such as airline, departure and arrival times, duration, number of stops, and date of travel. The model is trained on a dataset containing flight pricing information and utilizes feature engineering techniques to improve prediction accuracy.</p>
-										<h3>Features</h3>
+									<p style="text-align: justify;">This project analyzes customer behavior in an e-commerce platform to predict yearly spending using linear regression. Key factors such as time spent on the app, time spent on the website, session length, and membership duration are examined to determine their impact on spending.
+
+                                        Through data visualization and model evaluation, the analysis reveals that Length of Membership is the strongest predictor of spending, while Time on App influences purchases more than Time on Website. The model provides valuable insights for businesses to optimize marketing strategies and customer engagement, ultimately increasing revenue.</p>
+										<h3>Project Workflow:</h3>
 										<p style="text-align: justify;"></p>
 										<ul>
-											<li>Data preprocessing: Handling missing values, encoding categorical variables, and feature engineering</li>
-											<li>Feature selection and transformation for optimal model performance</li>
-											<li>Model training using Random Forest Regression for accurate price predictions</li>
-											<li>Hyperparameter tuning with GridSearchCV to optimize model performance</li>
-											<li>Performance evaluation using Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R² Score</li>
-											<li>Visualization of feature importance to understand key factors affecting ticket prices</li>
+                                            <h4>Data Collection:</h4>
+											<p>The dataset "Ecommerce Customers.csv" is loaded using Pandas. It contains customer spending data and behavioral metrics.</p>
+                                            <h4>Exploratory Data Analysis (EDA):</h4>
+											<p>Visualizations such as joint plots, pair plots, and regression plots help understand relationships between features and spending.</p>
+                                            <p><strong>Key insights:</strong></p>
+                                            <p><li>"Time on App" has a stronger correlation with spending than "Time on Website".</li>
+                                            <li>"Length of Membership" is a significant factor in predicting spending.</li> </p>
+                                            <h4>Model Training & Prediction:</h4>
+                                            <p>The dataset is split into 70% training and 30% testing. A Linear Regression model is trained using four features:
+                                                <li> Avg. Session Length</li>
+                                                <li>Time on App</li>
+                                                <li>Time on Website</li>
+                                                <li>Length of Membership</li>
+                                                The model learns the relationship between these features and Yearly Amount Spent.</p>
+											<h4>Model Evaluation:</h4>
+											<p>Predictions are compared against actual values using scatter plots.</p>
+                                            <p>Performance metrics:</p>
+                                            <li> Mean Absolute Error (MAE): Measures average prediction error in dollars.</li>
+                                            <li>Mean Squared Error (MSE) & RMSE: Evaluate overall prediction accuracy.</li>
+                                            <p>Residual analysis ensures that the errors are normally distributed, validating the model.</p>
 										</ul>
 
 									<hr class="major" />
@@ -64,8 +80,8 @@
 									<h2>Technologies Used</h2>
 									    
 										<p style="text-align: justify;">Programming Language: Python</p>
-										<p style="text-align: justify;">Libraries: Pandas, NumPy, Matplotlib, Scikit-learn</p>
-										<p style="text-align: justify;">Machine Learning Model: Random Forest Regression</p>
+										<p style="text-align: justify;">Libraries: Pandas, NumPy, Matplotlib, Scikit-learn, Seaborn</p>
+										<p style="text-align: justify;">Machine Learning Model: Linear Regression</p>
 									   
 									<hr class="major" />
 
@@ -73,12 +89,12 @@
 									<h3>Graphs</h3>
 									<div class="image-grid">
 										<div class="image-item">
-											<img src="images/Actual Price vs Predicted Price.png" alt="Image 1" />
-											<p style="text-align: justify; margin-bottom: 20px; margin-right: 10px;">This scatter plot visualizes the accuracy of the Random Forest Regression model by comparing the actual flight prices with the predicted prices. Ideally, points should lie along the diagonal line, indicating perfect predictions. The clustering along the diagonal suggests that the model performs well in estimating ticket prices, though some deviations are visible, indicating areas for potential improvement.</p>
+											<img src="images/Q-Q Plot.png" alt="Image 1" />
+											<p style="text-align: justify; margin-bottom: 20px; margin-right: 10px;">This Q-Q plot (Quantile-Quantile plot) compares the residuals of our model to a normal distribution. The blue points represent actual residuals, and the red line represents the expected normal distribution. If the residuals follow a normal distribution, they should align closely with the red line.</p>
 										</div>
 										<div class="image-item">
-											<img src="images/Feature Importance.png" alt="Image 2" />
-											<p style="text-align: justify; margin-bottom: 20px; margin-left: 10px;">This bar chart represents the importance of different features in predicting flight ticket prices. The "class" feature has the highest influence, followed by "duration", "days_left", and airline-related factors. This insight helps in understanding which variables significantly impact price fluctuations, guiding potential improvements to the model.</p>
+											<img src="images/Residual Histogram.png" alt="Image 2" />
+											<p style="text-align: justify; margin-bottom: 20px; margin-left: 10px;">This histogram shows the distribution of residuals (errors) from the model, with a KDE (Kernel Density Estimate) curve overlaid to highlight the shape.</p>
 										</div>
 									</div>
 									<style>
@@ -103,7 +119,7 @@
 								</section>
 							
 								<h2>Repository Link</h2>
-								<p style="text-align: justify;">Explore the code and Data in the GitHub repository: <a href="https://github.com/Nandu-Kris7/Flight-Price-Prediction.git">GitHub - Flight Price Prediction</a></p>
+								<p style="text-align: justify;">Explore the code and Data in the GitHub repository: <a href="https://github.com/Nandu-Kris7/Customer-Spending-Prediction-Using-Machine-Learning.git">GitHub - Customer Spending Prediction Using Machine Learning</a></p>
 								
 						</div>
 					</div>
