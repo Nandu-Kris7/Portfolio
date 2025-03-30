@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="index.html" class="logo"><strong>Portfolio</strong>  Nandu Krishna R</a>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									<li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									
+								</ul>
+							</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Drug Classifier</h1>
+									</header>
+
+									<span class="image main" style="float: right; max-width: 25%; height: auto; margin-left: 20px;"><img src="images/Drug Classification.png.png" alt="" /></span>
+
+									<p style="text-align: justify;">The goal of this project is to predict the type of drug a patient should be prescribed based on various medical
+                                        attributes using a Decision Tree Classifier. The model is trained and evaluated on a dataset containing
+                                        patient information such as age, sex, blood pressure levels, cholesterol levels, and sodium-to-potassium
+                                        ratio.</p>
+									
+
+									<hr class="major" />
+
+									<h2>Project Sections</h2>
+									<h3>Dataset</h3>
+									<p style="text-align: justify;">Source: drug200.csv, https://www.kaggle.com/code/caesarmario/drug-classification-w-various-ml-models</p>
+									<p style="text-align: justify;">Age: Patient age (numerical)</p>
+                                    <p style="text-align: justify;">Sex: Gender of the patient (F, M)</p>
+                                    <p style="text-align: justify;">BP: Blood Pressure (LOW, NORMAL, HIGH)</p>
+                                    <p style="text-align: justify;">Cholesterol: Cholesterol level (NORMAL, HIGH)</p>
+                                    <p style="text-align: justify;">Na_to_K: Sodium to Potassium ratio (numerical)</p>	
+                                    <p style="text-align: justify;">Target:Drug prescribed (drugA, drugB, drugC, drugX, drugY) </p>	
+                                    <h3>Data Preprocessing</h3>
+										<p style="text-align: justify;">Categorical variables (Sex, BP, Cholesterol, Drug) were encoded into numerical values using replace().
+                                            Feature set X and target variable y were defined for training the model.</p>
+                                    <h3>Modeling Approach</h3>
+                                        <p style="text-align: justify;">A Decision Tree Classifier from sklearn was used. The primary model used entropy as the criterion for
+                                            splitting and was limited to a max_depth=4 to prevent overfitting. 10-fold Cross-Validation was performed to
+                                            evaluate model performance.</p>
+                                    <h3>Model Evaluation</h3>
+										<p style="text-align: justify;">Cross-Validation Scores were printed for each fold. Mean accuracy and standard deviation were calculated to
+                                            assess the model's consistency. The decision tree was visualized using matplotlib.</p>
+                                    <h3>Hyperparameter Tuning</h3>
+										<p style="text-align: justify;"> Criterion Comparison: Evaluated model performance using different split criteria: gini, entropy, and log_loss.</p>
+                                        <p style="text-align: justify;">Max Depth Variation: ested different values of max_depth: None, 3, 5. Helped in understanding the trade-off between
+                                            underfitting and overfitting.</p>
+                                    <h3>Decision Tree Visualization</h3>
+										<p style="text-align: justify;">A graphical representation of the trained decision tree was generated to show how features are used to split
+                                            data and aid in model interpretability.</p>
+                                            <div class="image-item">
+                                                <img src="images/Decision Tree drug classifier.png" alt="Image 2" />
+                                                <p style="text-align: justify; margin-bottom: 20px; margin-left: 10px;"></p>
+                                            </div>
+                                    <h3>Skills Demonstrated</h3>
+										<p style="text-align: justify;">Data Cleaning & Encoding
+                                            - Feature Selection
+                                            - Supervised Learning (Classification)
+                                            - Model Evaluation using Cross-Validation
+                                            - Decision Tree Tuning and Visualization
+                                            - Python (Pandas, NumPy, Matplotlib, Scikit-learn)</p>
+                                            <h3>Conclusion</h3>
+                                            <p style="text-align: justify;">This project demonstrates a solid understanding of supervised machine learning, decision trees, and model
+                                                evaluation. The decision tree classifier performs well on the dataset and can be a useful model for making
+                                                drug prescription predictions based on patient characteristics.</p>
+
+									<hr class="major" />
+
+									<h2>Technologies Used</h2>
+									    
+										<p style="text-align: justify;">Programming Language: Python</p>
+										<p style="text-align: justify;">Libraries: Pandas, NumPy, Matplotlib, Scikit-learn</p>
+										<p style="text-align: justify;">Machine Learning Model: Decision Tree classifier</p>
+									   
+									<hr class="major" />
+
+						
+								
+								</section>
+							
+								<h2>Repository Link</h2>
+								<p style="text-align: justify;">Explore the code and Data in the GitHub repository: <a href="https://github.com/Nandu-Kris7/Drug-Classification">GitHub - Drug Classification</a></p>
+								
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+							<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="index.html">Homepage</a></li>
+								
+								<li><a href="Resume.html">Resume</a></li>
+								<li>
+									<span class="opener">Projects</span>
+									<ul>
+										<li><a href="Welkin Aves.html">Welkin Aves</a></li>
+										<li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
+										<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction Using Machine Learning</a></li>
+										<li><a href="Drug Classifier.html">Drug Classification</a></li>
+									</ul>
+								</li>
+								
+						</nav>
+
+							
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<p style="text-align: justify;">I’d love to hear from you! Whether you have a question, an opportunity, or just want to connect, feel free to reach out. Let’s collaborate and make great things happen.</p>
+								<ul class="contact">
+									<li class="icon solid fa-envelope"><a href="#">nandukris7@outlook.com</a></li>
+									<li class="icon solid fa-phone">(818) 984-7951</li>
+									<li class="icon solid fa-home">8925 Lindley Ave, Northridge<br />
+									California 91325</li>
+								</ul>
+							</section>
+
+						<!-- Footer -->
+							<footer id="footer">
+								<p class="copyright">&copy;  All rights reserved.</a> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							</footer>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
