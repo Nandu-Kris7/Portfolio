@@ -1935,7 +1935,6 @@ button,
   #sidebar h2 {
     font-size: 1.38889em; }
   #sidebar > .inner {
-   
     padding: 2.22222em 2.22222em 2.44444em 2.22222em ;
     position: relative;
     width: 26em; }
@@ -2035,7 +2034,7 @@ button,
         left: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        position: absolute;
+        position: relative;
         top: 0; }
         #sidebar > .inner:after {
           content: '';
@@ -2066,7 +2065,7 @@ button,
         content: '';
         height: 3.5em;
         left: 1em;
-        position: absolute;
+        position: relative;
         top: 1em;
         width: 5em; } }
 
@@ -2110,7 +2109,6 @@ button,
 
 /* Banner */
 #banner {
-  position: absolute;
   padding: 6em 0 4em 0 ;
   display: -moz-flex;
   display: -webkit-flex;
