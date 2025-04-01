@@ -1845,6 +1845,7 @@ button,
 
 /* Main */
 #main {
+ 
   -moz-flex-grow: 1;
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -1930,14 +1931,14 @@ button,
   transition: margin-left 0.5s ease, box-shadow 0.5s ease;
   background-color: #f5f6f7;
   font-size: 0.9em;
-  position: relative;
+  position: fixed;
   width: 26em; }
   #sidebar h2 {
     font-size: 1.38889em; }
   #sidebar > .inner {
    
     padding: 2.22222em 2.22222em 2.44444em 2.22222em ;
-    position: fixed;
+    position: relative;
     width: 26em; }
     #sidebar > .inner > * {
       border-bottom: solid 2px rgba(210, 215, 217, 0.75);
