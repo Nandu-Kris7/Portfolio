@@ -233,6 +233,12 @@
 					.trigger('resize.sidebar-lock');
 
 				});
+				if (localStorage.getItem('dark-mode') === null) {
+					if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					  body.classList.add('dark-mode');
+					  localStorage.setItem('dark-mode', true);
+					}
+				  }
 
 	// Menu.
 		var $menu = $('#menu'),
