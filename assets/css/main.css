@@ -1935,6 +1935,7 @@ button,
   #sidebar h2 {
     font-size: 1.38889em; }
   #sidebar > .inner {
+    position: fixed;
     padding: 2.22222em 2.22222em 2.44444em 2.22222em ;
     position: relative;
     width: 26em; }
@@ -2194,6 +2195,7 @@ button,
 
 /* Menu */
 #menu ul {
+  
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
