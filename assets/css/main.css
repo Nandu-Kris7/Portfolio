@@ -2412,8 +2412,6 @@ body.dark-mode #menu .opener:hover {
   z-index: -1; /* keeps it behind everything */
   background: transparent;
 }
-html {
-  scroll-behavior: smooth;
-}
+
 
 
