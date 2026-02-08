@@ -1,13 +1,317 @@
-/* Look for these in assets/css/main.css */
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-#sidebar {
-	margin-left: -20px; /* Remove or adjust negative margin */
-	/* or */
-	left: 0; /* If using positioning */
-}
+	</head>
+	<body class="is-preload">
+		<div id="particles-js"></div>
+		<!-- Dark Mode Toggle -->
+		<div class="dark-toggle">
+			<label class="switch">
+			  <input type="checkbox" id="toggle-dark-mode">
+			  <span class="slider round"></span>
+			</label>
+		  </div>
+		  <script>
+			const toggle = document.getElementById('toggle-dark-mode');
+			const body = document.body;
+		  
+			// Load saved preference
+			const darkPref = localStorage.getItem('dark-mode') === 'true';
+			if (darkPref) {
+			  body.classList.add('dark-mode');
+			  const toggleInput = document.getElementById('toggle-dark-mode');
+			  if (toggleInput) toggleInput.checked = true;
+			}
+		  
+			// Toggle handler
+			if (toggle) {
+			  toggle.addEventListener('change', () => {
+				body.classList.toggle('dark-mode', toggle.checked);
+				localStorage.setItem('dark-mode', toggle.checked);
+			  });
+			}
+		  </script>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-#wrapper {
-	display: flex;
-	margin: 0; /* Ensure no extra margins */
-	padding: 0;
-}
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="index.html" class="logo"><strong>Portfolio</strong>  Nandu Krishna R</a>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									<li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									
+								</ul>
+							</header>
+
+							<!-- Content -->
+								<section>
+									
+									<header class="main">
+										<h1>Risk-X: Real-Time Risk Intelligence (Graduate Project)</h1>
+									</header>
+
+									<!-- Thumbnail / hero image -->
+									<span class="image main" style="float: right; max-width: 28%; height: auto; margin-left: 20px;">
+										<img src="images/thumbnail riskx.png" alt="Risk-X Thumbnail" />
+									</span>
+
+									<p style="text-align: justify;">
+										<strong>Status:</strong> In Progress 🚧 <br/>
+										Risk-X is a cloud-native streaming system for real-time transaction risk monitoring. It scores each incoming transaction for anomalies, detects concept drift in behavior patterns, and automatically adapts by recalibrating alert thresholds and resetting the anomaly model when drift is detected.
+									</p>
+
+									<hr class="major" />
+
+									<h2>Project Sections</h2>
+
+									<h3>Overview</h3>
+									<p style="text-align: justify;">
+										Traditional fraud and risk systems often rely on batch processing and periodic retraining, which can lag behind rapidly changing user behavior and evolving fraud tactics.
+										Risk-X addresses this by using a streaming pipeline on Microsoft Azure to process events in real time, detect anomalies immediately, and respond to drift (distribution changes) so alerting remains stable and meaningful.
+									</p>
+
+									<h3>Key Goals</h3>
+									<ul>
+										<li>Stream transactions in real time and assign an anomaly risk score per event.</li>
+										<li>Detect drift in the score stream and/or key feature statistics.</li>
+										<li>Apply an adaptation policy: <strong>reset anomaly model + recalibrate alert thresholds</strong>.</li>
+										<li>Persist results for auditability and analysis.</li>
+										<li>Provide a live dashboard for anomaly trends, alerts, and drift markers.</li>
+									</ul>
+
+									<hr class="major" />
+
+									<h2>Confirmed Design Decisions</h2>
+									<ul>
+										<li><strong>Dataset:</strong> IEEE-CIS Fraud Detection (replayed as a transaction stream)</li>
+										<li><strong>Ingestion:</strong> Azure Event Hubs</li>
+										<li><strong>Compute:</strong> Consumer microservice deployed on Azure Container Apps</li>
+										<li><strong>Modeling:</strong> Online anomaly detection using River</li>
+										<li><strong>Drift Detection:</strong> ADWIN / Page-Hinkley</li>
+										<li><strong>Adaptation Policy:</strong> Reset model + recalibrate threshold</li>
+										<li><strong>Storage:</strong> Azure SQL Database</li>
+										<li><strong>Dashboard:</strong> Streamlit deployed on Azure Container Apps</li>
+										<li><strong>Monitoring:</strong> Azure Monitor (and logs/metrics from services)</li>
+										<li><strong>Explainability:</strong> Rule-based “reason codes” (no SHAP)</li>
+									</ul>
+
+									<hr class="major" />
+
+									<h2>Project Workflow</h2>
+									<ul>
+										<h4>1) Data Replay / Producer</h4>
+										<p>
+										Replay IEEE-CIS records in time order and publish each transaction as a JSON event into Azure Event Hubs.
+										</p>
+
+										<h4>2) Consumer Microservice (Real-Time Scoring)</h4>
+										<p>
+										Consume events from Event Hubs, validate and preprocess the message, engineer features, compute an anomaly score,
+										update drift detection, and write results to Azure SQL.
+										</p>
+
+										<h4>3) Drift Handling (Auto Adaptation)</h4>
+										<p>
+										When drift is detected, the microservice triggers the adaptation policy:
+										<strong>recalibrate alert threshold</strong> (e.g., rolling percentile of recent scores) and <strong>reset the anomaly model</strong>.
+										Drift events and updated thresholds are persisted for visibility.
+										</p>
+
+										<h4>4) Dashboard</h4>
+										<p>
+										Streamlit dashboard queries Azure SQL to visualize anomaly score trends, alert events, drift markers, and system statistics.
+										</p>
+									</ul>
+
+									<hr class="major" />
+
+									<h2>Evaluation Plan (Planned)</h2>
+									<ul>
+										<li><strong>Alert Quality:</strong> Compare alerts against IEEE-CIS labels offline (e.g., Precision@K, alert hit-rate).</li>
+										<li><strong>Operational Metrics:</strong> End-to-end latency, throughput, alert rate stability.</li>
+										<li><strong>Drift Impact:</strong> Measure alert behavior before/after drift events; verify recalibration prevents alert spam or silence.</li>
+									</ul>
+
+									<hr class="major" />
+
+									<h2>Technologies Used</h2>
+									<p style="text-align: justify;"><strong>Cloud:</strong> Azure Event Hubs, Azure Container Apps, Azure SQL, Azure Monitor</p>
+									<p style="text-align: justify;"><strong>Programming:</strong> Python</p>
+									<p style="text-align: justify;"><strong>Streaming + ML:</strong> River (online anomaly detection + drift detection)</p>
+									<p style="text-align: justify;"><strong>Dashboard:</strong> Streamlit</p>
+
+									<hr class="major" />
+
+									<h2>Progress Tracker</h2>
+									<ul>
+										<li><strong>Completed:</strong> Architecture design + microservice flowchart</li>
+										<li><strong>In Progress:</strong> Data replay producer (IEEE-CIS → Event Hubs)</li>
+										<li><strong>In Progress:</strong> Consumer microservice skeleton (consume → score → drift → persist)</li>
+										<li><strong>Planned:</strong> Azure SQL schema + ingestion tables (transactions_scored, drift_events)</li>
+										<li><strong>Planned:</strong> Streamlit dashboard MVP</li>
+										<li><strong>Planned:</strong> Monitoring + evaluation scripts</li>
+									</ul>
+									<h2>Project Media</h2>
+									<h3>Images</h3>
+									<div class="image-grid">
+										<div class="image-item">
+											<img src="images/system_architecture.png" alt="Image 1" />
+											<p style="text-align: justify; margin-bottom: 20px; margin-right: 10px;">This diagram shows the end-to-end architecture of Risk-X, a real-time risk monitoring pipeline. The IEEE-CIS dataset is replayed by an event producer that publishes transaction events to Azure Event Hubs. A consumer microservice running on Azure Container Apps ingests the stream, performs online anomaly detection, runs drift detection (ADWIN/Page-Hinkley), and applies an adaptation policy (model reset + threshold recalibration) when drift is detected. All scores, alerts, and drift events are stored in an Azure SQL Database, which powers a Streamlit dashboard for visualization, while Azure Monitor tracks logs and operational metrics.</p>
+										</div>
+                                        <div class="image-item">
+                                            <iframe src="images/Computing.drawio.pdf" width="800" height="400" style="border: none;"></iframe>
+                                            <p style="text-align: justify; margin-bottom: 20px; margin-right: 10px;">This diagram illustrates the detailed microservice architecture and data flow within the Consumer component. It shows how incoming transaction events are validated, preprocessed, and fed through the feature engineering pipeline. The anomaly detection model (powered by River) generates risk scores in real-time, which are then monitored by drift detection algorithms (ADWIN/Page-Hinkley). When drift is detected, the system automatically triggers the adaptation policy to reset the model and recalibrate alert thresholds, ensuring the system remains responsive to changing patterns while maintaining alert quality and stability.</p>
+                                        </div>
+									</div>
+									<style>
+									.image-grid {
+										display: grid;
+										grid-template-columns: repeat(2, 1fr);
+										gap: 10px;
+										margin-top: 10px;
+									}
+
+									.image-item {
+										text-align: center;
+									}
+
+									.image-item img {
+										width: 800px;
+										height: 400px; /* Set a fixed height for all images */
+										object-fit: fit; /* Ensure images cover the area without distortion */
+									}
+									</style>
+								</section>
+
+								<h2>Repository Link</h2>
+								<p style="text-align: justify;">
+									Repository (will be updated as development progresses): 
+									<a href="https://github.com/Nandu-Kris7/Real-Time-Risk-Intelligence.git" target="_blank">GitHub - Risk-X</a></p>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+							<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="index.html">Homepage</a></li>
+								
+								<li><a href="Resume.html">Resume</a></li>
+								<li>
+									<span class="opener">Projects</span>
+									<ul>
+                                        <li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
+										<li><a href="Welkin Aves.html">Welkin Aves</a></li>
+                                        <li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
+										<li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
+										<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction Using Machine Learning</a></li>
+										<li><a href="Drug Classifier.html">Drug Classification</a></li>
+										<li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Real-Time Pose-Based Attention Analysis</a></li>
+									    
+									</ul>
+								</li>
+								
+						</nav>
+
+							
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<p style="text-align: justify;">I’d love to hear from you! Whether you have a question, an opportunity, or just want to connect, feel free to reach out. Let’s collaborate and make great things happen.</p>
+								<ul class="contact">
+									<li class="icon solid fa-envelope"><a href="#">nandukris7@outlook.com</a></li>
+									<li class="icon solid fa-phone">(818) 984-7951</li>
+									<li class="icon solid fa-home">8925 Lindley Ave, Northridge<br />
+									California 91325</li>
+								</ul>
+							</section>
+
+						<!-- Footer -->
+							<footer id="footer">
+								<p class="copyright">&copy;  All rights reserved.</a> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							</footer>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+						<script>
+				particlesJS("particles-js", {
+				  particles: {
+					number: { value: 80, density: { enable: true, value_area: 800 } },
+					color: { value: "#330099" },
+					shape: { type: "circle" },
+					opacity: { value: 0.5 },
+					size: { value: 3, random: true },
+					line_linked: {
+					  enable: true,
+					  distance: 150,
+					  color: "#33CC99",
+					  opacity: 0.6,
+					  width: 2
+					},
+					move: {
+					  enable: true,
+					  speed: 2,
+					  direction: "none",
+					  out_mode: "out"
+					}
+				  },
+				  interactivity: {
+					detect_on: "canvas",
+					events: {
+					  onhover: { enable: true, mode: "grab" },
+					  onclick: { enable: true, mode: "push" },
+					  resize: true
+					},
+					modes: {
+					  grab: { distance: 140, line_linked: { opacity: 0.5 } },
+					  push: { particles_nb: 4 }
+					}
+				  },
+				  retina_detect: true
+				});
+			  </script>
+			  
+	</body>
+</html>
