@@ -2421,3 +2421,31 @@ body.dark-mode #menu .opener:hover {
     padding-left: 0 !important;
   }
 }
+/* ================================
+   Risk-X / Editorial Layout FIX
+   Paste at VERY BOTTOM of main.css
+   ================================ */
+
+/* IMPORTANT:
+   Editorial uses: #wrapper { flex-direction: row-reverse; }
+   So the space for the sidebar must be on the RIGHT, not the left.
+*/
+
+#wrapper {
+  padding-right: 26em !important;  /* matches #sidebar width */
+  padding-left: 0 !important;
+}
+
+/* Do NOT force sidebar position; it breaks off-canvas behavior */
+#sidebar {
+  margin-left: 0 !important;
+  left: auto !important;
+}
+
+/* Keep default mobile/off-canvas behavior */
+@media screen and (max-width: 1280px) {
+  #wrapper {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
