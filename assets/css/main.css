@@ -2410,4 +2410,14 @@ body.dark-mode #menu .opener:hover {
   background: transparent;
 }
 
+/* Fix: restore Editorial layout spacing */
+#wrapper {
+  padding-left: 24em !important;   /* space for sidebar */
+}
 
+/* On smaller screens, keep the original mobile behavior */
+@media screen and (max-width: 1280px) {
+  #wrapper {
+    padding-left: 0 !important;
+  }
+}
