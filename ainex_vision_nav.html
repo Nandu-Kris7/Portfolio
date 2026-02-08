@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+	</head>
+	<body class="is-preload">
+		<div id="particles-js"></div>
+		<!-- Dark Mode Toggle -->
+		<div class="dark-toggle">
+			<label class="switch">
+			  <input type="checkbox" id="toggle-dark-mode">
+			  <span class="slider round"></span>
+			</label>
+		  </div>
+		  <script>
+			const toggle = document.getElementById('toggle-dark-mode');
+			const body = document.body;
+		  
+			// Load saved preference
+			const darkPref = localStorage.getItem('dark-mode') === 'true';
+			if (darkPref) {
+			  body.classList.add('dark-mode');
+			  const toggleInput = document.getElementById('toggle-dark-mode');
+			  if (toggleInput) toggleInput.checked = true;
+			}
+		  
+			// Toggle handler
+			if (toggle) {
+			  toggle.addEventListener('change', () => {
+				body.classList.toggle('dark-mode', toggle.checked);
+				localStorage.setItem('dark-mode', toggle.checked);
+			  });
+			}
+		  </script>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="index.html" class="logo"><strong>Portfolio</strong>  Nandu Krishna R</a>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									<li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									
+								</ul>
+							</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Ainex-vision-nav</h1>
+									</header>
+
+									<span class="image main" style="float: right; max-width: 25%; height: auto; margin-left: 20px;"><img src="images/ChatGPT Image Feb 8, 2026, 11_58_48 AM.png" alt="" /></span>
+
+									<p style="text-align: justify;">I built a safety-first navigation demo for an Ainex humanoid where the robot captures a camera frame, sends it to a vision-language model for a high-level decision, then executes one small, controlled motion primitive (forward/turn/stop) via ROS. The key idea is separating responsibilities: the AI does reasoning, while the robot controller handles execution stability. This keeps behavior predictable and makes debugging much easier.</p>
+									
+
+									<hr class="major" />
+
+									<h2>Project Sections</h2>
+									<h3>Overview</h3>
+									<p style="text-align: justify;">This project explores vision-based navigation for an Ainex humanoid robot using ROS (Noetic). The robot captures images onboard, sends them to a vision-language decision module (currently via OpenAI), then executes one safe, discrete motion primitive at a time through ROS.
+
+                                                                    The result is a full autonomy loop—see → decide → move → see again—with optional user prompts at ambiguous intersections.
+
+                                                                    Conducted as research under Professor Myung (Michael) Cho.</p>
+										<h3>Project Workflow:</h3>
+										<p style="text-align: justify;"></p>
+										<ul>
+                                            <h4>System Architecture:</h4>
+											<p>Capture: save a reliable frame from /camera/image_rect_color (or fallback topics if needed).
+
+                                                <ul>
+                                                    <li>Decide: model returns a strict JSON action like:
+                                                        <ul>
+                                                            <li>MOVE_FORWARD_SHORT</li>
+                                                            <li>TURN_LEFT_90</li>
+                                                            <li>TURN_RIGHT_90</li>
+                                                            <li>STOP</li>
+                                                            <li>ASK_USER("Left or right?")</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Execute: run one motion primitive through the Ainex walking stack (ROS topic/service).</li>
+                                                    <li>Repeat: loop until stopped.</li>
+                                                </ul>
+                                            <h4>Design principle</h4>
+                                            <ul>
+                                                <li>The "brain" makes high-level decisions only.</li>
+                                                <li>Low-level walking stability remains inside the existing Ainex controller.</li>
+                                                <li>Default behavior is conservative: when uncertain → STOP or ASK_USER.</li>
+                                            </ul>
+                                            <p><strong>What I implemented</strong></p>
+                                            <p><li>Motion primitives as scripts: consistent, single-purpose commands (forward step, 90° turns, stop).
+
+                                                <ul>
+                                                    <li>Reliable camera capture: one-liner scripts to create captures/capture.jpg every time.</li>
+                                                    <li>Vision-language decision module:
+                                                        <ul>
+                                                            <li>Strict JSON output parsing</li>
+                                                            <li>Defensive fallbacks to STOP</li>
+                                                            <li>Environment-based config (model, tokens, temperature)</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Demo modes:
+                                                        <ul>
+                                                            <li>Single-step decision + execute</li>
+                                                            <li>Closed-loop demo loop (capture → decide → execute → repeat)</li>
+                                                            <li>DRY_RUN mode to test decisions without moving hardware</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            <h4>Results / demo behavior</h4>
+                                            <p>Robot can repeatedly:
+
+                                                <ul>
+                                                    <li>Capture frames and perform inference</li>
+                                                    <li>Select a discrete action from a constrained action set</li>
+                                                    <li>Execute a safe step and re-evaluate the environment</li>
+                                                    <li>System supports "human-in-the-loop" navigation: at uncertain junctions, the model can request user input rather than guessing</li>
+                                                </ul>
+                                        <h4>Key challenges (and what I learned)</h4>
+                                        <ul>
+                                            <li><strong>ROS environment issues:</strong> mismatched ROS_MASTER_URI, missing nodes, and services not reachable. Learned fast debugging patterns for ROS networks and startup order.</li>
+                                            <li><strong>Walking drift / curvature:</strong> even small asymmetries in gait parameters can cause arc turns. Learned to isolate the problem: decision vs execution vs gait tuning.</li>
+                                            <li><strong>Reliability matters more than cleverness:</strong> the best demo is the one that runs 20 times in a row.</li>
+                                        </ul>
+										</ul>
+
+									<hr class="major" />
+
+									<h2>Tech stack</h2>
+									    
+										<p style="text-align: justify;">ROS Noetic
+
+                                            <ul>
+                                                <li>Ainex walking stack (topics/services)</li>
+                                                <li>Python (decision loop + OpenAI client)</li>
+                                                <li>Bash scripts (motion/capture primitives)</li>
+                                                <li>Windows dev workflow (GitHub app + sync scripts to robot)</li>
+                                            </ul>
+                                            <p></p>
+									<hr class="major" />
+
+									<h2>Project Media</h2>
+									<h3>Test</h3>
+									<div class="image-grid">
+                                        <div class="image-item">
+                                            <video src="images/Camera testing.mp4" controls style="width: 400px; height: 400px; object-fit: cover;"></video>
+                                            <p style="text-align: justify; margin-bottom: 20px; margin-right: 10px;">This is me testing the camera functionality</p>
+                                        </div>
+                                        <div class="image-item">
+                                            <img src="images/camera test cli .png" alt="Image 2" />
+                                            <p style="text-align: justify; margin-bottom: 20px; margin-left: 10px;">This is a screenshot of the camera test command line interface</p>
+                                        </div>
+										<div class="image-item">
+											<iframe width="400" height="400" src="https://www.youtube.com/embed/9f6ziVSf1DA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											<p style="text-align: justify; margin-bottom: 20px; margin-left: 10px;">This is a demo of the navigation system in action</p>
+										</div>
+									</div>
+									<style>
+									.image-grid {
+										display: grid;
+										grid-template-columns: repeat(2, 1fr);
+										gap: 10px;
+										margin-top: 10px;
+									}
+
+									.image-item {
+										text-align: center;
+									}
+
+									.image-item img {
+										width: 400px;
+										height: 400px; /* Set a fixed height for all images */
+										object-fit: fit; /* Ensure images cover the area without distortion */
+									}
+									</style>
+
+								</section>
+                                <h2>Safety considerations</h2>
+									    
+										<p style="text-align: justify;">
+
+                                            <ul>
+                                                <li>Single-step execution (no continuous uncontrolled walking)</li>
+                                                <li>Conservative defaults: STOP if parsing fails or confidence is low</li>
+                                                <li>Optional user confirmation at ambiguous scenes</li>
+                                                <li>Clear separation between decision and actuation layers</li>
+                                            </ul>
+                                            </ul>
+                                            <p></p>
+                          <h2>Future work</h2>
+									    
+										<p style="text-align: justify;">
+
+                                            <ul>
+                                                <li>Run the "brain" locally on-device (replace API calls with an onboard model)</li>
+                                                <li>Improve gait stability and reduce drift (calibration + parameter tuning + feedback)</li>
+                                                <li>Add simple state (e.g., "if we just turned left, avoid turning left again immediately")</li>
+                                                <li>Add basic obstacle safety checks (e-stop, distance thresholds, or vision heuristics)</li>
+                                            </ul>
+                                            </ul>
+                                            </ul>
+                                            <p></p>
+							
+								<h2>Repository Link</h2>
+								<p style="text-align: justify;">Explore the code and Data in the GitHub repository: <a href="https://github.com/Nandu-Kris7/ainex-vision-nav.git">GitHub - Ainex Vision Navigation</a></p>
+								
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+							<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="index.html">Homepage</a></li>
+								
+								<li><a href="Resume.html">Resume</a></li>
+								<li>
+									<span class="opener">Projects</span>
+									<ul>
+										<li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
+										<li><a href="Welkin Aves.html">Welkin Aves</a></li>
+                                        <li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
+										<li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
+										<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction Using Machine Learning</a></li>
+										<li><a href="Drug Classifier.html">Drug Classification</a></li>
+										<li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Real-Time Pose-Based Attention Analysis</a></li>
+                                    </ul>
+								</li>
+								
+						</nav>
+
+							
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<p style="text-align: justify;">I’d love to hear from you! Whether you have a question, an opportunity, or just want to connect, feel free to reach out. Let’s collaborate and make great things happen.</p>
+								<ul class="contact">
+									<li class="icon solid fa-envelope"><a href="#">nandukris7@outlook.com</a></li>
+									<li class="icon solid fa-phone">(818) 984-7951</li>
+									<li class="icon solid fa-home">8925 Lindley Ave, Northridge<br />
+									California 91325</li>
+								</ul>
+							</section>
+
+						<!-- Footer -->
+							<footer id="footer">
+								<p class="copyright">&copy;  All rights reserved.</a> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							</footer>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+						<script>
+				particlesJS("particles-js", {
+				  particles: {
+					number: { value: 80, density: { enable: true, value_area: 800 } },
+					color: { value: "#330099" },
+					shape: { type: "circle" },
+					opacity: { value: 0.5 },
+					size: { value: 3, random: true },
+					line_linked: {
+					  enable: true,
+					  distance: 150,
+					  color: "#33CC99",
+					  opacity: 0.6,
+					  width: 2
+					},
+					move: {
+					  enable: true,
+					  speed: 2,
+					  direction: "none",
+					  out_mode: "out"
+					}
+				  },
+				  interactivity: {
+					detect_on: "canvas",
+					events: {
+					  onhover: { enable: true, mode: "grab" },
+					  onclick: { enable: true, mode: "push" },
+					  resize: true
+					},
+					modes: {
+					  grab: { distance: 140, line_linked: { opacity: 0.5 } },
+					  push: { particles_nb: 4 }
+					}
+				  },
+				  retina_detect: true
+				});
+			  </script>
+			  
+	</body>
+</html>
