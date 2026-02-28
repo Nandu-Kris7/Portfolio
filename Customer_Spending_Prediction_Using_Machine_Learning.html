@@ -1,261 +1,224 @@
 <!DOCTYPE HTML>
 <!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Editorial by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
-	<head>
-		<title>Projects</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
-		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<html lang="en">
+<head>
+  <title>Customer Spending Prediction | Linear Regression</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="Predict yearly customer spending from behavioral metrics using linear regression and residual analysis." />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/project-extras.css" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body class="is-preload">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-	</head>
-	<body class="is-preload">
-		<div id="particles-js"></div>
-		<!-- Dark Mode Toggle -->
-		<div class="dark-toggle">
-			<label class="switch">
-			  <input type="checkbox" id="toggle-dark-mode">
-			  <span class="slider round"></span>
-			</label>
-		  </div>
-		  <script>
-			const toggle = document.getElementById('toggle-dark-mode');
-			const body = document.body;
-		  
-			// Load saved preference
-			const darkPref = localStorage.getItem('dark-mode') === 'true';
-			if (darkPref) {
-			  body.classList.add('dark-mode');
-			  const toggleInput = document.getElementById('toggle-dark-mode');
-			  if (toggleInput) toggleInput.checked = true;
-			}
-		  
-			// Toggle handler
-			if (toggle) {
-			  toggle.addEventListener('change', () => {
-				body.classList.toggle('dark-mode', toggle.checked);
-				localStorage.setItem('dark-mode', toggle.checked);
-			  });
-			}
-		  </script>
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <div id="particles-js"></div>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+  <div class="dark-toggle">
+    <label class="switch">
+      <input type="checkbox" id="toggle-dark-mode">
+      <span class="slider round"></span>
+    </label>
+  </div>
 
-							<!-- Header -->
-							<header id="header">
-								<a href="index.html" class="logo"><strong>Portfolio</strong>  Nandu Krishna R</a>
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									<li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									
-								</ul>
-							</header>
+  <script>
+  const toggle = document.getElementById('toggle-dark-mode');
+  const body = document.body;
 
-							<!-- Content -->
-								<section>
-									
-									<header class="main">
-										<h1>Customer Spending Prediction Using Machine Learning</h1>
-									</header>
+  const darkPref = localStorage.getItem('dark-mode') === 'true';
+  if (darkPref) {
+    body.classList.add('dark-mode');
+    if (toggle) toggle.checked = true;
+  }
 
-									<span class="image main" style="float: right; max-width: 25%; height: auto; margin-left: 20px;"><img src="images/customer Project thumbnail.png" alt="" /></span>
+  if (toggle) {
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode', toggle.checked);
+      localStorage.setItem('dark-mode', toggle.checked);
+    });
+  }
+</script>
 
-									<p style="text-align: justify;">The goal of this project is to predict the yearly amount a customer spends based on various behavioral metrics collected from an e-commerce platform. By using linear regression, we analyze how factors like time spent on the app, time spent on the website, average session length, and membership duration influence customer spending.</p>
-									
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner" id="main-content">
+        <header id="header">
+  <a href="index.html" class="logo"><strong>Portfolio</strong> Nandu Krishna R</a>
+  <ul class="icons">
+    <li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin" aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
+    <li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github" aria-label="GitHub"><span class="label">Github</span></a></li>
+    <li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram" aria-label="Instagram"><span class="label">Instagram</span></a></li>
+  </ul>
+</header>
 
-									<hr class="major" />
+        <section>
+  <header class="main">
+    <h1>Customer Spending Prediction</h1>
+    <p class="subtitle">Regression • Linear model + behavioral insights for e-commerce spending</p>
+  </header>
 
-									<h2>Project Sections</h2>
-									<h3>Overview</h3>
-									<p style="text-align: justify;">This project analyzes customer behavior in an e-commerce platform to predict yearly spending using linear regression. Key factors such as time spent on the app, time spent on the website, session length, and membership duration are examined to determine their impact on spending.
+  <span class="image project-hero">
+    <img src="images/customer Project thumbnail.png" alt="Customer spending prediction thumbnail" loading="lazy" />
+  </span>
 
-                                        Through data visualization and model evaluation, the analysis reveals that Length of Membership is the strongest predictor of spending, while Time on App influences purchases more than Time on Website. The model provides valuable insights for businesses to optimize marketing strategies and customer engagement, ultimately increasing revenue.</p>
-										<h3>Project Workflow:</h3>
-										<p style="text-align: justify;"></p>
-										<ul>
-                                            <h4>Data Collection:</h4>
-											<p>The dataset "Ecommerce Customers.csv" is loaded using Pandas. It contains customer spending data and behavioral metrics.</p>
-                                            <h4>Exploratory Data Analysis (EDA):</h4>
-											<p>Visualizations such as joint plots, pair plots, and regression plots help understand relationships between features and spending.</p>
-                                            <p><strong>Key insights:</strong></p>
-                                            <p><li>"Time on App" has a stronger correlation with spending than "Time on Website".</li>
-                                            <li>"Length of Membership" is a significant factor in predicting spending.</li> </p>
-                                            <h4>Model Training & Prediction:</h4>
-                                            <p>The dataset is split into 70% training and 30% testing. A Linear Regression model is trained using four features:
-                                                <li> Avg. Session Length</li>
-                                                <li>Time on App</li>
-                                                <li>Time on Website</li>
-                                                <li>Length of Membership</li>
-                                                The model learns the relationship between these features and Yearly Amount Spent.</p>
-											<h4>Model Evaluation:</h4>
-											<p>Predictions are compared against actual values using scatter plots.</p>
-                                            <p>Performance metrics:</p>
-                                            <li> Mean Absolute Error (MAE): Measures average prediction error in dollars.</li>
-                                            <li>Mean Squared Error (MSE) & RMSE: Evaluate overall prediction accuracy.</li>
-                                            <p>Residual analysis ensures that the errors are normally distributed, validating the model.</p>
-										</ul>
+  <p style="text-align: justify;">
+    Predict yearly customer spending from behavioral metrics collected from an e-commerce platform. Using linear regression,
+    this project analyzes how time on app, time on website, average session length, and membership duration influence spending.
+  </p>
 
-									<hr class="major" />
+  <div class="tldr">
+  <div class="box">
+    <h3>TL;DR</h3>
+    <p style="text-align: justify;">Linear regression model to predict yearly amount spent and interpret which behavioral metrics drive purchases.</p>
+  </div>
+  <div class="box">
+    <h3>My role</h3>
+    <p style="text-align: justify;">Built the workflow: EDA → train/test split → linear regression → evaluation with residual analysis and interpretation.</p>
+  </div>
+  <div class="box">
+    <h3>Tech</h3>
+    <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span></div>
+  </div>
+  <div class="box">
+    <h3>Links</h3>
+    <div class="actions inline"><a href="https://github.com/Nandu-Kris7/Customer-Spending-Prediction-Using-Machine-Learning.git" class="button small">GitHub Repo</a></div>
+  </div>
+</div>
 
-									<h2>Technologies Used</h2>
-									    
-										<p style="text-align: justify;">Programming Language: Python</p>
-										<p style="text-align: justify;">Libraries: Pandas, NumPy, Matplotlib, Scikit-learn, Seaborn</p>
-										<p style="text-align: justify;">Machine Learning Model: Linear Regression</p>
-									   
-									<hr class="major" />
+  <hr class="major" />
 
-									<h2>Project Media</h2>
-									<h3>Graphs</h3>
-									<div class="image-grid">
-										<div class="image-item">
-											<img src="images/Q-Q Plot.png" alt="Image 1" />
-											<p style="text-align: justify; margin-bottom: 20px; margin-right: 10px;">This Q-Q plot (Quantile-Quantile plot) compares the residuals of our model to a normal distribution. The blue points represent actual residuals, and the red line represents the expected normal distribution. If the residuals follow a normal distribution, they should align closely with the red line.</p>
-										</div>
-										<div class="image-item">
-											<img src="images/Residual Histogram.png" alt="Image 2" />
-											<p style="text-align: justify; margin-bottom: 20px; margin-left: 10px;">This histogram shows the distribution of residuals (errors) from the model, with a KDE (Kernel Density Estimate) curve overlaid to highlight the shape.</p>
-										</div>
-									</div>
-									<style>
-									.image-grid {
-										display: grid;
-										grid-template-columns: repeat(2, 1fr);
-										gap: 10px;
-										margin-top: 10px;
-									}
+  <h2>Overview</h2>
+  <p style="text-align: justify;">
+    This project examines key factors that impact spending. A consistent takeaway from the analysis is that
+    <strong>Length of Membership</strong> is one of the strongest predictors, and <strong>Time on App</strong> tends to correlate
+    more strongly with spending than <strong>Time on Website</strong>.
+  </p>
 
-									.image-item {
-										text-align: center;
-									}
+  <h2>Workflow</h2>
+  <ul>
+    <li><strong>Data collection:</strong> Load the dataset (<code>Ecommerce Customers.csv</code>) and inspect columns/types.</li>
+    <li><strong>EDA:</strong> Joint plots, pair plots, and regression plots to understand feature relationships.</li>
+    <li><strong>Model training:</strong> 70/30 split; train Linear Regression on the four main features.</li>
+    <li><strong>Evaluation:</strong> Scatter plot of predictions vs actual + residual analysis (distribution sanity check).</li>
+  </ul>
 
-									.image-item img {
-										width: 400px;
-										height: 400px; /* Set a fixed height for all images */
-										object-fit: fit; /* Ensure images cover the area without distortion */
-									}
-									</style>
+  <h2>Media</h2>
+  <div class="media-grid">
+    <figure class="media-item">
+      <img src="images/Q-Q Plot.png" alt="Q-Q plot for residual normality" loading="lazy" />
+      <figcaption>
+        Q-Q plot comparing residuals to a normal distribution. Closer alignment suggests residuals are approximately normal.
+      </figcaption>
+    </figure>
+    <figure class="media-item">
+      <img src="images/Residual Histogram.png" alt="Residual histogram for customer spending model" loading="lazy" />
+      <figcaption>
+        Residual histogram with KDE overlay to inspect error distribution.
+      </figcaption>
+    </figure>
+  </div>
 
-								</section>
-							
-								<h2>Repository Link</h2>
-								<p style="text-align: justify;">Explore the code and Data in the GitHub repository: <a href="https://github.com/Nandu-Kris7/Customer-Spending-Prediction-Using-Machine-Learning.git">GitHub - Customer Spending Prediction Using Machine Learning</a></p>
-								
-						</div>
-					</div>
+  <hr class="major" />
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+  <h2>Repository</h2>
+  <p style="text-align: justify;">
+    Explore the code on GitHub:
+    <a href="https://github.com/Nandu-Kris7/Customer-Spending-Prediction-Using-Machine-Learning.git">Customer Spending Prediction</a>
+  </p>
+</section>
+      </div>
+    </div>
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
+    <div id="sidebar">
+  <div class="inner">
+    <section id="search" class="alt">
+      <form method="post" action="#">
+        <input type="text" name="query" id="query" placeholder="Search" />
+      </form>
+    </section>
 
-							<!-- Menu -->
-							<nav id="menu">
-							<header class="major">
-								<h2>Menu</h2>
-							</header>
-							<ul>
-								<li><a href="index.html">Homepage</a></li>
-								
-								<li><a href="Resume.html">Resume</a></li>
-								<li>
-									<span class="opener">Projects</span>
-									<ul>
-										<li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
-										<li><a href="Welkin Aves.html">Welkin Aves</a></li>
-                                        <li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
-										<li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
-										<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction Using Machine Learning</a></li>
-										<li><a href="Drug Classifier.html">Drug Classification</a></li>
-										<li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Real-Time Pose-Based Attention Analysis</a></li>
-									</ul>
-								</li>
-								
-						</nav>
+    <nav id="menu">
+      <header class="major"><h2>Menu</h2></header>
+      <ul>
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="Resume.html">Resume</a></li>
+        <li>
+          <span class="opener">Projects</span>
+          <ul>
+            <li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
+            <li><a href="Welkin Aves.html">Welkin Aves</a></li>
+            <li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
+            <li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
+            <li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction</a></li>
+            <li><a href="Drug Classifier.html">Drug Classification</a></li>
+            <li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Pose-Based Attention Analysis</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
-							
-							<!-- Section -->
-							<section>
-								<header class="major">
-									<h2>Get in touch</h2>
-								</header>
-								<p style="text-align: justify;">I’d love to hear from you! Whether you have a question, an opportunity, or just want to connect, feel free to reach out. Let’s collaborate and make great things happen.</p>
-								<ul class="contact">
-									<li class="icon solid fa-envelope"><a href="#">nandukris7@outlook.com</a></li>
-									<li class="icon solid fa-phone">(818) 984-7951</li>
-									<li class="icon solid fa-home">8925 Lindley Ave, Northridge<br />
-									California 91325</li>
-								</ul>
-							</section>
+    <section id="contact">
+      <header class="major"><h2>Get in touch</h2></header>
+      <p style="text-align: justify;">
+        Want to collaborate, talk opportunities, or nerd out about a project? Email works best.
+      </p>
+      <ul class="contact">
+        <li class="icon solid fa-envelope"><a href="mailto:nandukris7@outlook.com">nandukris7@outlook.com</a></li>
+        <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/nandu-krishna-r/">LinkedIn</a></li>
+        <li class="icon brands fa-github"><a href="https://github.com/Nandu-Kris7">GitHub</a></li>
+        <li class="icon solid fa-map-marker-alt">Northridge, CA (open to relocate / remote)</li>
+      </ul>
+    </section>
 
-						<!-- Footer -->
-							<footer id="footer">
-								<p class="copyright">&copy;  All rights reserved.</a> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-							</footer>
-						</div>
-					</div>
+    <footer id="footer">
+      <p class="copyright">&copy; All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </footer>
+  </div>
+</div>
+  </div>
 
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-						<script>
-				particlesJS("particles-js", {
-				  particles: {
-					number: { value: 80, density: { enable: true, value_area: 800 } },
-					color: { value: "#330099" },
-					shape: { type: "circle" },
-					opacity: { value: 0.5 },
-					size: { value: 3, random: true },
-					line_linked: {
-					  enable: true,
-					  distance: 150,
-					  color: "#33CC99",
-					  opacity: 0.6,
-					  width: 2
-					},
-					move: {
-					  enable: true,
-					  speed: 2,
-					  direction: "none",
-					  out_mode: "out"
-					}
-				  },
-				  interactivity: {
-					detect_on: "canvas",
-					events: {
-					  onhover: { enable: true, mode: "grab" },
-					  onclick: { enable: true, mode: "push" },
-					  resize: true
-					},
-					modes: {
-					  grab: { distance: 140, line_linked: { opacity: 0.5 } },
-					  push: { particles_nb: 4 }
-					}
-				  },
-				  retina_detect: true
-				});
-			  </script>
-			  
-	</body>
+  <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+  <script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#330099" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      size: { value: 3, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#33CC99",
+        opacity: 0.6,
+        width: 2
+      },
+      move: { enable: true, speed: 2, direction: "none", out_mode: "out" }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 0.5 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+</body>
 </html>

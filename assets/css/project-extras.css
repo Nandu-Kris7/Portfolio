@@ -1,0 +1,126 @@
+/* project-extras.css
+   Small add-on styles for project pages (works with HTML5UP Editorial)
+*/
+
+.skip-link {
+  position: absolute;
+  top: -44px;
+  left: 12px;
+  background: #fff;
+  color: #111;
+  padding: 10px 12px;
+  border-radius: 8px;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+.subtitle {
+  margin-top: -0.6rem;
+  opacity: 0.85;
+}
+
+.project-hero {
+  float: right;
+
+  /* Make thumbnails a consistent, smaller size on desktop */
+  width: 320px;
+  max-width: 40%;
+  margin: 0 0 1rem 1.25rem;
+}
+
+.project-hero img {
+  width: 100%;
+  height: auto;
+
+  /* Prevent giant/tall thumbnails */
+  max-height: 240px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+}
+
+@media (max-width: 980px) {
+  .project-hero {
+    float: none;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 0 1rem 0;
+  }
+
+  .project-hero img {
+    max-height: none;
+    object-fit: cover;
+  }
+}
+
+.tldr {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 1rem 0 1.25rem 0;
+}
+@media (max-width: 980px) {
+  .tldr { grid-template-columns: 1fr; }
+}
+.tldr .box { margin: 0; }
+.tldr h3 { margin-top: 0; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.tag {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85em;
+  line-height: 1.2;
+  opacity: 0.95;
+}
+
+.callout {
+  border-left: 4px solid rgba(255,255,255,0.35);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+}
+
+.actions.inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+.media-item { margin: 0; }
+.media-item img,
+.media-item video,
+.media-item iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 10px;
+}
+.media-item img { object-fit: cover; }
+.media-item img.contain {
+  object-fit: contain;
+  background: rgba(255,255,255,0.03);
+}
+.media-item video { object-fit: cover; }
+.media-item iframe { background: rgba(0,0,0,0.15); }
+.media-item figcaption {
+  margin-top: 10px;
+  font-size: 0.95em;
+  opacity: 0.9;
+}

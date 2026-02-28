@@ -1,240 +1,233 @@
 <!DOCTYPE HTML>
 <!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Editorial by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
-	<head>
-		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-		<title>Projects</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
-	</head>
-	<body class="is-preload">
-		<div id="particles-js"></div>
+<html lang="en">
+<head>
+  <title>Pose-Based Attention Analysis | Raspberry Pi + MoveNet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="Real-time pose-based attention analysis on Raspberry Pi using TFLite MoveNet, interpretable heuristics, and on-device processing." />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/project-extras.css" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body class="is-preload">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-		<div class="dark-toggle">
-			<label class="switch">
-			  <input type="checkbox" id="toggle-dark-mode">
-			  <span class="slider round"></span>
-			</label>
-		  </div>
-		  <script>
-			const toggle = document.getElementById('toggle-dark-mode');
-			const body = document.body;
-		  
-			// Load saved preference
-			const darkPref = localStorage.getItem('dark-mode') === 'true';
-			if (darkPref) {
-			  body.classList.add('dark-mode');
-			  const toggleInput = document.getElementById('toggle-dark-mode');
-			  if (toggleInput) toggleInput.checked = true;
-			}
-		  
-			// Toggle handler
-			if (toggle) {
-			  toggle.addEventListener('change', () => {
-				body.classList.toggle('dark-mode', toggle.checked);
-				localStorage.setItem('dark-mode', toggle.checked);
-			  });
-			}
-		  </script>
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <div id="particles-js"></div>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+  <div class="dark-toggle">
+    <label class="switch">
+      <input type="checkbox" id="toggle-dark-mode">
+      <span class="slider round"></span>
+    </label>
+  </div>
 
-							<!-- Header -->
-							<header id="header">
-								<a href="index.html" class="logo"><strong>Portfolio</strong>  Nandu Krishna R</a>
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									<li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									
-								</ul>
-							</header>
+  <script>
+  const toggle = document.getElementById('toggle-dark-mode');
+  const body = document.body;
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Real-Time Pose-Based Attention Analysis</h1>
-									</header>
+  const darkPref = localStorage.getItem('dark-mode') === 'true';
+  if (darkPref) {
+    body.classList.add('dark-mode');
+    if (toggle) toggle.checked = true;
+  }
 
-									<span class="image main" style="float: right; max-width: 25%; height: auto; margin-left: 20px;"><img src="images/Thumbnail.png" alt="" /></span>
+  if (toggle) {
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode', toggle.checked);
+      localStorage.setItem('dark-mode', toggle.checked);
+    });
+  }
+</script>
 
-									<p style="text-align: justify;">Built an embedded system that captures live video of a student, runs on-device pose estimation to extract 17 body keypoints, applies attention heuristics (head tilt, drooping, hand-raise), and flags “Attentive” vs “Not Attentive” in real time all on a Raspberry Pi.</p>
-									
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner" id="main-content">
+        <header id="header">
+  <a href="index.html" class="logo"><strong>Portfolio</strong> Nandu Krishna R</a>
+  <ul class="icons">
+    <li><a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin" aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
+    <li><a href="https://github.com/Nandu-Kris7" class="icon brands fa-github" aria-label="GitHub"><span class="label">Github</span></a></li>
+    <li><a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram" aria-label="Instagram"><span class="label">Instagram</span></a></li>
+  </ul>
+</header>
 
-									<hr class="major" />
+        <section>
+  <header class="main">
+    <h1>Real-Time Pose-Based Attention Analysis</h1>
+    <p class="subtitle">Embedded CV • Pose estimation + interpretable attention heuristics on Raspberry Pi</p>
+  </header>
 
-									<h2>Project Sections</h2>
-									<h3>Overview</h3>
-									<p style="text-align: justify;">The Real-Time Pose-Based Attention Analysis project delivers an end-to-end solution for monitoring student engagement using only a Raspberry Pi 4B+ and a USB camera. The system captures live video, runs on-device pose estimation via a lightweight TensorFlow Lite MoveNet model, applies a set of human-interpretable heuristics to assess attention, and logs all relevant data for future refinement.</p>
-										<h3>Features</h3>
-										<p style="text-align: justify;"></p>
-										<ul>
-											<li>Real-Time Pose Estimation: ~15 FPS on Pi</li>
-											<li>Attention Heuristics: Head tilt, drooping, hand-raise detection</li>
-											<li>On-Device Processing: All computations performed on Raspberry Pi</li>
-											<li>Lightweight Model: MoveNet model optimized for embedded systems</li>
-											<li>Visual Overlay: Annotated live video with keypoints and status</li>
-											<li>Real-Time Inference: Pose estimation and attention analysis in real-time</li>
-											<li>Data Logging: Captures and stores attention data for analysis</li>
-										</ul>
+  <span class="image project-hero">
+    <img src="images/Thumbnail.png" alt="Pose-based attention analysis thumbnail" loading="lazy" />
+  </span>
 
-									<hr class="major" />
+  <p style="text-align: justify;">
+    Built an embedded system that captures live video, runs on-device pose estimation to extract 17 body keypoints,
+    applies attention heuristics (head tilt, drooping, hand-raise), and flags “Attentive” vs “Not Attentive” in real time —
+    all on a Raspberry Pi.
+  </p>
 
-									<h2>Technologies Used</h2>
-									    
-										<p style="text-align: justify;">Programming Language: Python</p>
-										<p style="text-align: justify;">Libraries: imutils, OpenCV, TensorFlow Lite</p>
-										<p style="text-align: justify;">Machine Learning Model: MoveNet</p>
-										<p style="text-align: justify;">Hardware: Raspberry Pi 4B+, USB Camera</p>
-									<hr class="major" />
+  <div class="tldr">
+  <div class="box">
+    <h3>TL;DR</h3>
+    <p style="text-align: justify;">On-device MoveNet (TFLite) pose estimation + fast heuristics to classify attention status in real time on Raspberry Pi.</p>
+  </div>
+  <div class="box">
+    <h3>My role</h3>
+    <p style="text-align: justify;">Architected the full pipeline (capture → preprocessing → TFLite inference → keypoints → heuristics → overlay → CSV logging) and optimized performance via threaded capture.</p>
+  </div>
+  <div class="box">
+    <h3>Tech</h3>
+    <div class="tags"><span class="tag">Raspberry Pi 4B+</span><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">TensorFlow Lite</span><span class="tag">MoveNet</span><span class="tag">imutils</span></div>
+  </div>
+  <div class="box">
+    <h3>Links</h3>
+    <div class="actions inline"><a href="https://github.com/Nandu-Kris7/Real-Time-Pose-Based-Attention-Analysis-on-Raspberry-Pi.git" class="button small">GitHub Repo</a></div>
+  </div>
+</div>
 
-									<h2>My Role</h2>
-									<p style="text-align: justify;">Architected end-to-end pipeline: video capture → preprocessing → TFLite inference → feature extraction → attention analysis → data logging</p>
+  <hr class="major" />
 
-									<p style="text-align: justify;">Integrated threading (imutils) for smooth frame rates</p>
+  <h2>Features</h2>
+  <ul>
+    <li>Real-time pose estimation (~15 FPS on Pi)</li>
+    <li>Attention heuristics: head tilt, drooping, hand-raise detection</li>
+    <li>On-device processing (no cloud required)</li>
+    <li>Visual overlay with keypoints + status</li>
+    <li>CSV logging for future learning-based upgrades</li>
+  </ul>
 
-									<p style="text-align: justify;">Implemented CSV logging of timestamp, head-tilt, attention status, feedback, and raw keypoints for future model training</p>
+  <h2>My role</h2>
+  <ul>
+    <li>Built the end-to-end pipeline: video capture → preprocessing → TFLite inference → feature extraction → attention analysis → logging</li>
+    <li>Integrated threaded capture (imutils) for smooth frame rates</li>
+    <li>Implemented CSV logging of timestamp, head-tilt, attention status, feedback, and raw keypoints</li>
+    <li>Optimized preprocessing to match the quantized MoveNet model</li>
+  </ul>
 
-									<p style="text-align: justify;">Optimized dtype and preprocessing to match the quantized MoveNet model</p>
+  <h2>Challenges and solutions</h2>
+  <ul>
+    <li><strong>Pi performance:</strong> baseline ~5 FPS → improved using threaded capture and lighter preprocessing.</li>
+    <li><strong>Model dtype mismatch:</strong> adjusted preprocessing to satisfy quantized TFLite expectations.</li>
+    <li><strong>Heuristic tuning:</strong> iteratively tuned thresholds on real data to reduce false positives.</li>
+  </ul>
 
-									<h2>Challenges and Solution</h2>
-												<p style="text-align: justify;">Pi-level Performance: Baseline ~5 FPS; solved via threaded capture.</p>
+  <h2>Outcomes</h2>
+  <ul>
+    <li>Delivered an end-to-end demo running fully on Raspberry Pi</li>
+    <li>Logged <strong>10,000+ frames</strong> for future classifier training</li>
+    <li>Benchmarked <strong>~15 FPS</strong> real-time inference with 17 keypoints</li>
+  </ul>
 
-												<p style="text-align: justify;">Model DType Mismatch: Switched preprocessing from float32→normalized to raw uint8 to satisfy quantized TFLite</p>
+  <h2>Future enhancements</h2>
+  <ul>
+    <li>Train a learned classifier using the logged dataset</li>
+    <li>Add additional cues: body lean, eye gaze, facial expression</li>
+    <li>Build a web dashboard for live monitoring + analytics</li>
+    <li>Optional cloud streaming for centralized analytics</li>
+  </ul>
 
-												<p style="text-align: justify;">Heuristic Tuning: Iteratively adjusted tilt/position thresholds on real data to minimize false positives</p>
-									
-									<h2>Outcomes</h2>
-												<p style="text-align: justify;">Prototype Delivered: Complete end-to-end demo running on Pi</p>
+  <hr class="major" />
 
-												<p style="text-align: justify;">Dataset Collected: > 10 000 frames logged with features & labels for future classifier training</p>
+  <h2>Repository</h2>
+  <p style="text-align: justify;">
+    Explore the code on GitHub:
+    <a href="https://github.com/Nandu-Kris7/Real-Time-Pose-Based-Attention-Analysis-on-Raspberry-Pi.git">Real-Time Pose-Based Attention Analysis</a>
+  </p>
+</section>
+      </div>
+    </div>
 
-												<p style="text-align: justify;">Performance Benchmarks: 15 FPS real-time inference with 17 keypoints</p>
+    <div id="sidebar">
+  <div class="inner">
+    <section id="search" class="alt">
+      <form method="post" action="#">
+        <input type="text" name="query" id="query" placeholder="Search" />
+      </form>
+    </section>
 
-									<h2>Future Enhancements</h2>
-									<p style="text-align: justify;">Custom Classifier: Train an ML model on the logged data to replace hand-tuned rules</p>
-									<p style="text-align: justify;">Additional Cues: Add body-lean, eye-gaze, facial-expression analysis</p>
-									<p style="text-align: justify;">User Interface: Develop a web dashboard for real-time monitoring and analytics</p>
-									<p style="text-align: justify;">Cloud Integration: Stream data to a server for centralized monitoring and analytics</p>
-								
-									<h2>Repository Link</h2>
-								<p style="text-align: justify;">Explore the code and Data in the GitHub repository: <a href="https://github.com/Nandu-Kris7/Real-Time-Pose-Based-Attention-Analysis-on-Raspberry-Pi.git">GitHub - Real-Time Pose-Based Attention Analysis on Raspberry Pi</a></p>
+    <nav id="menu">
+      <header class="major"><h2>Menu</h2></header>
+      <ul>
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="Resume.html">Resume</a></li>
+        <li>
+          <span class="opener">Projects</span>
+          <ul>
+            <li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
+            <li><a href="Welkin Aves.html">Welkin Aves</a></li>
+            <li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
+            <li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
+            <li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction</a></li>
+            <li><a href="Drug Classifier.html">Drug Classification</a></li>
+            <li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Pose-Based Attention Analysis</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
-						</div>
-					</div>
+    <section id="contact">
+      <header class="major"><h2>Get in touch</h2></header>
+      <p style="text-align: justify;">
+        Want to collaborate, talk opportunities, or nerd out about a project? Email works best.
+      </p>
+      <ul class="contact">
+        <li class="icon solid fa-envelope"><a href="mailto:nandukris7@outlook.com">nandukris7@outlook.com</a></li>
+        <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/nandu-krishna-r/">LinkedIn</a></li>
+        <li class="icon brands fa-github"><a href="https://github.com/Nandu-Kris7">GitHub</a></li>
+        <li class="icon solid fa-map-marker-alt">Northridge, CA (open to relocate / remote)</li>
+      </ul>
+    </section>
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+    <footer id="footer">
+      <p class="copyright">&copy; All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </footer>
+  </div>
+</div>
+  </div>
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
-							<!-- Menu -->
-							<nav id="menu">
-							<header class="major">
-								<h2>Menu</h2>
-							</header>
-							<ul>
-								<li><a href="index.html">Homepage</a></li>
-								
-								<li><a href="Resume.html">Resume</a></li>
-								<li>
-									<span class="opener">Projects</span>
-									<ul>
-										<li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
-										<li><a href="Welkin Aves.html">Welkin Aves</a></li>
-                                        <li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
-										<li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
-										<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction Using Machine Learning</a></li>
-										<li><a href="Drug Classifier.html">Drug Classification</a></li>
-										<li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Real-Time Pose-Based Attention Analysis</a></li>
-									</ul>
-								</li>
-								
-						</nav>
-
-							
-							<!-- Section -->
-							<section>
-								<header class="major">
-									<h2>Get in touch</h2>
-								</header>
-								<p style="text-align: justify;">I’d love to hear from you! Whether you have a question, an opportunity, or just want to connect, feel free to reach out. Let’s collaborate and make great things happen.</p>
-								<ul class="contact">
-									<li class="icon solid fa-envelope"><a href="#">nandukris7@outlook.com</a></li>
-									<li class="icon solid fa-phone">(818) 984-7951</li>
-									<li class="icon solid fa-home">8925 Lindley Ave, Northridge<br />
-									California 91325</li>
-								</ul>
-							</section>
-
-						<!-- Footer -->
-							<footer id="footer">
-								<p class="copyright">&copy;  All rights reserved.</a> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-							</footer>
-						</div>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-					<script>
-				particlesJS("particles-js", {
-				  particles: {
-					number: { value: 80, density: { enable: true, value_area: 800 } },
-					color: { value: "#330099" },
-					shape: { type: "circle" },
-					opacity: { value: 0.5 },
-					size: { value: 3, random: true },
-					line_linked: {
-					  enable: true,
-					  distance: 150,
-					  color: "#33CC99",
-					  opacity: 0.6,
-					  width: 2
-					},
-					move: {
-					  enable: true,
-					  speed: 2,
-					  direction: "none",
-					  out_mode: "out"
-					}
-				  },
-				  interactivity: {
-					detect_on: "canvas",
-					events: {
-					  onhover: { enable: true, mode: "grab" },
-					  onclick: { enable: true, mode: "push" },
-					  resize: true
-					},
-					modes: {
-					  grab: { distance: 140, line_linked: { opacity: 0.5 } },
-					  push: { particles_nb: 4 }
-					}
-				  },
-				  retina_detect: true
-				});
-			  </script>
-			  
-	</body>
+  <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+  <script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#330099" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      size: { value: 3, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#33CC99",
+        opacity: 0.6,
+        width: 2
+      },
+      move: { enable: true, speed: 2, direction: "none", out_mode: "out" }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 0.5 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+</body>
 </html>
