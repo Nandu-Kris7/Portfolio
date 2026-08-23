@@ -1,0 +1,1095 @@
+<!DOCTYPE HTML>
+<!--
+  Editorial by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license
+  (html5up.net/license)
+-->
+<html lang="en">
+
+<head>
+  <title>Student Performance Prediction | Machine Learning</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <meta
+    name="description"
+    content="Predicting student exam performance using multiple linear regression, preprocessing, baseline comparison, and model evaluation with scikit-learn."
+  />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/project-extras.css" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+
+<body class="is-preload">
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div id="particles-js"></div>
+
+  <!-- Dark Mode Toggle -->
+  <div class="dark-toggle">
+    <label class="switch">
+      <input type="checkbox" id="toggle-dark-mode">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('toggle-dark-mode');
+    const body = document.body;
+
+    const darkPref = localStorage.getItem('dark-mode') === 'true';
+
+    if (darkPref) {
+      body.classList.add('dark-mode');
+      if (toggle) toggle.checked = true;
+    }
+
+    if (toggle) {
+      toggle.addEventListener('change', () => {
+        body.classList.toggle('dark-mode', toggle.checked);
+        localStorage.setItem('dark-mode', toggle.checked);
+      });
+    }
+  </script>
+
+
+  <div id="wrapper">
+
+
+    <!-- Main -->
+    <div id="main">
+
+      <div class="inner" id="main-content">
+
+
+        <!-- Header -->
+        <header id="header">
+
+          <a href="index.html" class="logo">
+            <strong>Portfolio</strong> Nandu Krishna R
+          </a>
+
+          <ul class="icons">
+
+            <li>
+              <a
+                href="https://www.linkedin.com/in/nandu-krishna-r/"
+                class="icon brands fa-linkedin"
+                aria-label="LinkedIn"
+              >
+                <span class="label">LinkedIn</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://github.com/Nandu-Kris7"
+                class="icon brands fa-github"
+                aria-label="GitHub"
+              >
+                <span class="label">GitHub</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.instagram.com/cypher_.7"
+                class="icon brands fa-instagram"
+                aria-label="Instagram"
+              >
+                <span class="label">Instagram</span>
+              </a>
+            </li>
+
+          </ul>
+
+        </header>
+
+
+        <!-- Project -->
+        <section>
+
+          <header class="main">
+
+            <h1>Student Performance Prediction</h1>
+
+            <p class="subtitle">
+              Machine Learning • Regression • Education Analytics
+            </p>
+
+          </header>
+
+
+          <!-- Hero -->
+          <span class="image project-hero">
+
+            <img
+              src="images/student-performance-thumbnail.png"
+              alt="Student performance prediction project"
+              loading="lazy"
+            />
+
+          </span>
+
+
+          <!-- Introduction -->
+          <p style="text-align: justify;">
+
+            This project explores a student performance dataset and applies
+            machine learning to predict final exam scores using academic and
+            behavioral features.
+
+            Rather than focusing only on training a model, the project follows
+            the broader machine learning workflow: understanding the dataset,
+            identifying useful features, handling categorical data, preventing
+            data leakage, building a baseline, training a regression model, and
+            evaluating how well the model generalizes to unseen students.
+
+          </p>
+
+
+          <!-- TLDR -->
+          <div class="tldr">
+
+
+            <div class="box">
+
+              <h3>TL;DR</h3>
+
+              <p style="text-align: justify;">
+
+                A multiple linear regression model that predicts student final
+                exam scores using study time, internet access, attendance, and
+                previous grades.
+
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>My Role</h3>
+
+              <p style="text-align: justify;">
+
+                Built the workflow from data exploration and preprocessing
+                through train/test splitting, baseline construction, regression
+                modeling, coefficient interpretation, and performance
+                evaluation.
+
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Tech</h3>
+
+              <div class="tags">
+
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">Matplotlib</span>
+                <span class="tag">Seaborn</span>
+                <span class="tag">Jupyter</span>
+
+              </div>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Links</h3>
+
+              <div class="actions inline">
+
+                <a
+                  href="https://github.com/Nandu-Kris7/Student_performance_prediction"
+                  class="button small"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Repo
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <hr class="major" />
+
+
+          <!-- Overview -->
+          <h2>Overview</h2>
+
+          <p style="text-align: justify;">
+
+            The dataset contains 1,000 student records and 12 columns covering
+            academic habits, lifestyle information, educational background,
+            and final performance.
+
+            Some of the available features include study time, attendance,
+            sleep hours, internet access, previous grades, extracurricular
+            activities, part-time job status, parental education, final exam
+            score, and final grade.
+
+          </p>
+
+
+          <h2>Regression Goal</h2>
+
+          <p style="text-align: justify;">
+
+            The first stage of the project treats student performance as a
+            regression problem.
+
+            The target variable is:
+
+          </p>
+
+          <pre><code>final_exam_score</code></pre>
+
+          <p>
+            The initial model uses four predictor variables:
+          </p>
+
+          <ul>
+
+            <li>
+              <strong>Study Time:</strong>
+              Number of hours spent studying.
+            </li>
+
+            <li>
+              <strong>Internet Access:</strong>
+              Whether the student has access to the internet.
+            </li>
+
+            <li>
+              <strong>Attendance:</strong>
+              Percentage of classes attended.
+            </li>
+
+            <li>
+              <strong>Previous Grade:</strong>
+              Previous academic performance.
+            </li>
+
+          </ul>
+
+
+          <!-- Leakage -->
+          <h2>Avoiding Data Leakage</h2>
+
+          <p style="text-align: justify;">
+
+            One important modeling decision was to exclude
+            <strong>final_grade</strong> from the regression features.
+
+            Because the final grade is closely related to the student's final
+            exam result, using it to predict the exam score could allow the
+            model to access information that effectively reveals the answer.
+
+            This is a form of <strong>data leakage</strong>, which can produce
+            unrealistically strong model performance.
+
+          </p>
+
+
+          <!-- Exploration -->
+          <h2>Initial Data Exploration</h2>
+
+          <p style="text-align: justify;">
+
+            Before training the model, I inspected the shape, columns, example
+            rows, and missing values in the dataset.
+
+          </p>
+
+          <pre><code>import pandas as pd
+
+df = pd.read_csv("student_performance_dataset.csv")
+
+print(df.shape)
+print(df.columns)
+print(df.head())
+print(df.isna().sum())</code></pre>
+
+          <p style="text-align: justify;">
+
+            During exploration, I found missing values in the
+            <strong>parental_education</strong> feature. That feature was not
+            included in the initial regression model, but it provides an
+            opportunity to explore missing-value handling in later versions.
+
+          </p>
+
+
+          <!-- EDA -->
+          <h2>Exploratory Data Analysis</h2>
+
+          <p style="text-align: justify;">
+
+            Matplotlib and Seaborn are used to explore the distributions of
+            individual variables and examine relationships between student
+            characteristics and performance.
+
+          </p>
+
+          <p>
+            The goal of the EDA stage is to understand questions such as:
+          </p>
+
+          <ul>
+
+            <li>How is the final exam score distributed?</li>
+            <li>Does increased study time generally correspond to higher scores?</li>
+            <li>How strongly is attendance associated with exam performance?</li>
+            <li>How informative are previous grades?</li>
+            <li>Are there unusual values or obvious outliers?</li>
+
+          </ul>
+
+
+          <!-- Preprocessing -->
+          <h2>Preprocessing</h2>
+
+          <p style="text-align: justify;">
+
+            The <strong>internet_access</strong> feature is categorical and
+            contains two values:
+
+          </p>
+
+          <pre><code>Yes
+No</code></pre>
+
+          <p>
+            It was converted into a binary numerical feature:
+          </p>
+
+          <pre><code>df["internet_access"] = df["internet_access"].map({
+    "No": 0,
+    "Yes": 1
+})</code></pre>
+
+
+          <p style="text-align: justify;">
+
+            The selected predictors and target were then separated.
+
+          </p>
+
+          <pre><code>X = df[[
+    "study_time_hours",
+    "internet_access",
+    "attendance_percent",
+    "previous_grade"
+]]
+
+y = df["final_exam_score"]</code></pre>
+
+
+          <!-- Split -->
+          <h2>Train/Test Split</h2>
+
+          <p style="text-align: justify;">
+
+            The dataset was split using a 75/25 train-test ratio.
+
+            This gives the model 750 student records for training and keeps
+            250 students completely separate for evaluation.
+
+          </p>
+
+          <pre><code>from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.25,
+    random_state=42
+)</code></pre>
+
+
+          <!-- Model -->
+          <h2>Linear Regression Model</h2>
+
+          <p style="text-align: justify;">
+
+            A multiple linear regression model was trained using scikit-learn.
+
+          </p>
+
+          <pre><code>from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+
+model.fit(X_train, y_train)
+
+predictions = model.predict(X_test)</code></pre>
+
+
+          <p style="text-align: justify;">
+
+            During training, the model learns an intercept and one coefficient
+            for each input feature.
+
+            Instead of manually choosing those values, the fitting process
+            estimates the coefficients that best describe the relationships
+            found in the training data.
+
+          </p>
+
+
+          <!-- Metrics -->
+          <h2>Model Results</h2>
+
+          <div class="tldr">
+
+
+            <div class="box">
+
+              <h3>MAE</h3>
+
+              <p>
+                <strong>5.21</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Train RMSE</h3>
+
+              <p>
+                <strong>6.20</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Test RMSE</h3>
+
+              <p>
+                <strong>6.69</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>R²</h3>
+
+              <p>
+                <strong>0.575</strong>
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+          <p style="text-align: justify;">
+
+            The MAE indicates that the model's predictions differ from the
+            actual final exam scores by approximately
+            <strong>5.2 points on average</strong>.
+
+            The training RMSE of 6.20 and testing RMSE of 6.69 are relatively
+            close, suggesting that the current model does not show an obvious
+            large overfitting gap.
+
+          </p>
+
+
+          <!-- Baseline -->
+          <h2>Baseline Comparison</h2>
+
+          <p style="text-align: justify;">
+
+            To determine whether the regression model was actually learning
+            useful patterns, I compared it with a simple baseline predictor.
+
+            The baseline predicts the average training-set exam score for
+            every student.
+
+          </p>
+
+          <pre><code>baseline_value = y_train.mean()
+
+baseline_predictions = np.full(
+    len(y_test),
+    baseline_value
+)</code></pre>
+
+
+          <div class="tldr">
+
+            <div class="box">
+
+              <h3>Baseline RMSE</h3>
+
+              <p>
+                <strong>10.33</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Linear Regression RMSE</h3>
+
+              <p>
+                <strong>6.69</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <p style="text-align: justify;">
+
+            The regression model substantially improves upon the baseline.
+            This is more informative than evaluating the RMSE in isolation,
+            because it demonstrates that the model is learning useful
+            relationships from the selected features.
+
+          </p>
+
+
+          <!-- Coefficients -->
+          <h2>Learned Coefficients</h2>
+
+          <p style="text-align: justify;">
+
+            Linear regression also makes it possible to inspect the estimated
+            relationship between each feature and the predicted exam score.
+
+          </p>
+
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Feature</th>
+                  <th>Coefficient</th>
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Study Time</td>
+                  <td>4.21</td>
+                </tr>
+
+                <tr>
+                  <td>Internet Access</td>
+                  <td>6.05</td>
+                </tr>
+
+                <tr>
+                  <td>Attendance</td>
+                  <td>0.33</td>
+                </tr>
+
+                <tr>
+                  <td>Previous Grade</td>
+                  <td>0.35</td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+          <p style="text-align: justify;">
+
+            For example, with the other variables held constant, the model
+            associates one additional hour of study time with roughly a
+            <strong>4.2-point increase</strong> in predicted exam score.
+
+            These coefficients represent relationships learned from this
+            dataset and should not automatically be interpreted as causal
+            effects.
+
+          </p>
+
+
+          <!-- Media -->
+          <h2>Media</h2>
+
+          <div class="media-grid">
+
+
+            <figure class="media-item">
+
+              <img
+                src="images/student_performance_actual_vs_predicted.png"
+                alt="Predicted versus actual student exam scores"
+                loading="lazy"
+              />
+
+              <figcaption>
+
+                Predicted versus actual student final exam scores. The
+                predictions are reasonably close to the actual values, with
+                some variation.
+
+              </figcaption>
+
+            </figure>
+
+
+            <figure class="media-item">
+
+              <img
+                src="images/student_performance_residual_plot.png"
+                alt="Residual analysis for the student performance model"
+                loading="lazy"
+              />
+
+              <figcaption>
+
+                Residual plot for the student performance model. The residuals
+                are randomly scattered around the horizontal axis, indicating
+                that the model's assumptions are met.
+
+              </figcaption>
+
+            </figure>
+
+
+          </div>
+
+
+          <!-- Next Steps -->
+          <h2>Next Steps</h2>
+
+          <p style="text-align: justify;">
+
+            The project is still evolving. Planned extensions include deeper
+            residual analysis, feature selection, cross-validation, and
+            comparison with additional regression algorithms.
+
+          </p>
+
+          <ul>
+
+            <li>Analyze residuals and identify where the model performs poorly.</li>
+
+            <li>
+              Experiment with additional features such as sleep hours,
+              extracurricular activities, and employment status.
+            </li>
+
+            <li>
+              Handle missing values in parental education.
+            </li>
+
+            <li>Use cross-validation for more reliable model evaluation.</li>
+
+            <li>
+              Compare linear regression with other regression algorithms.
+            </li>
+
+            <li>
+              Turn <strong>final_grade</strong> into a multiclass
+              classification target.
+            </li>
+
+            <li>
+              Compare different classification algorithms and metrics.
+            </li>
+
+            <li>
+              Recreate parts of the machine learning workflow using PyTorch.
+            </li>
+
+          </ul>
+
+
+          <!-- Learning -->
+          <h2>What I Learned</h2>
+
+          <ul>
+
+            <li>How to explore and inspect a dataset before modeling.</li>
+
+            <li>How to select predictor variables and prediction targets.</li>
+
+            <li>How categorical variables can be encoded for regression.</li>
+
+            <li>Why identifiers such as student IDs should not be model features.</li>
+
+            <li>How data leakage can produce misleading model performance.</li>
+
+            <li>How to create reproducible training and testing subsets.</li>
+
+            <li>How multiple linear regression learns coefficients.</li>
+
+            <li>How to interpret MAE, RMSE, and R².</li>
+
+            <li>Why comparing a model to a baseline is important.</li>
+
+            <li>How train and test error can help identify possible overfitting.</li>
+
+            <li>
+              Why regression coefficients describe associations rather than
+              automatically proving causation.
+            </li>
+
+          </ul>
+
+
+          <hr class="major" />
+
+
+          <!-- Repository -->
+          <h2>Repository</h2>
+
+          <p style="text-align: justify;">
+
+            Explore the dataset, notebook, code, and continued development on
+            GitHub:
+
+            <a
+              href="https://github.com/Nandu-Kris7/Student_performance_prediction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Student Performance Prediction
+            </a>
+
+          </p>
+
+
+        </section>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+
+      <div class="inner">
+
+
+        <section id="search" class="alt">
+
+          <form method="post" action="#">
+
+            <input
+              type="text"
+              name="query"
+              id="query"
+              placeholder="Search"
+            />
+
+          </form>
+
+        </section>
+
+
+        <nav id="menu">
+
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+
+          <ul>
+
+            <li>
+              <a href="index.html">Homepage</a>
+            </li>
+
+            <li>
+              <a href="Resume.html">Resume</a>
+            </li>
+
+            <li>
+
+              <span class="opener">Projects</span>
+
+              <ul>
+
+                <li>
+                  <a href="Risk-X_Real_Time_Risk_Intelligence.html">
+                    Risk-X: Real-Time Risk Intelligence
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Welkin Aves.html">
+                    Welkin Aves
+                  </a>
+                </li>
+
+                <li>
+                  <a href="ainex_vision_nav.html">
+                    Ainex Vision Navigation
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Flight_Price_Prediction.html">
+                    Flight Price Prediction
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Customer_Spending_Prediction_Using_Machine_Learning.html">
+                    Customer Spending Prediction
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Energy_Consumption_Prediction.html">
+                    Building Energy Consumption Prediction
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Student_Performance_Prediction.html">
+                    Student Performance Prediction
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Drug Classifier.html">
+                    Drug Classification
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">
+                    Pose-Based Attention Analysis
+                  </a>
+                </li>
+
+              </ul>
+
+            </li>
+
+          </ul>
+
+        </nav>
+
+
+        <!-- Contact -->
+        <section id="contact">
+
+          <header class="major">
+            <h2>Get in touch</h2>
+          </header>
+
+          <p style="text-align: justify;">
+
+            Want to collaborate, talk opportunities, or nerd out about a
+            project? Email works best.
+
+          </p>
+
+          <ul class="contact">
+
+            <li class="icon solid fa-envelope">
+
+              <a href="mailto:nandukris7@outlook.com">
+                nandukris7@outlook.com
+              </a>
+
+            </li>
+
+            <li class="icon brands fa-linkedin">
+
+              <a href="https://www.linkedin.com/in/nandu-krishna-r/">
+                LinkedIn
+              </a>
+
+            </li>
+
+            <li class="icon brands fa-github">
+
+              <a href="https://github.com/Nandu-Kris7">
+                GitHub
+              </a>
+
+            </li>
+
+            <li class="icon solid fa-map-marker-alt">
+              Northridge, CA (open to relocate / remote)
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <footer id="footer">
+
+          <p class="copyright">
+
+            © All rights reserved.
+            Design:
+            <a href="https://html5up.net">
+              HTML5 UP
+            </a>.
+
+          </p>
+
+        </footer>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+  <!-- Particles -->
+  <script>
+
+    particlesJS("particles-js", {
+
+      particles: {
+
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+
+        color: {
+          value: "#330099"
+        },
+
+        shape: {
+          type: "circle"
+        },
+
+        opacity: {
+          value: 0.5
+        },
+
+        size: {
+          value: 3,
+          random: true
+        },
+
+        line_linked: {
+
+          enable: true,
+          distance: 150,
+          color: "#33CC99",
+          opacity: 0.6,
+          width: 2
+
+        },
+
+        move: {
+
+          enable: true,
+          speed: 2,
+          direction: "none",
+          out_mode: "out"
+
+        }
+
+      },
+
+      interactivity: {
+
+        detect_on: "canvas",
+
+        events: {
+
+          onhover: {
+            enable: true,
+            mode: "grab"
+          },
+
+          onclick: {
+            enable: true,
+            mode: "push"
+          },
+
+          resize: true
+
+        },
+
+        modes: {
+
+          grab: {
+
+            distance: 140,
+
+            line_linked: {
+              opacity: 0.5
+            }
+
+          },
+
+          push: {
+
+            particles_nb: 4
+
+          }
+
+        }
+
+      },
+
+      retina_detect: true
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>

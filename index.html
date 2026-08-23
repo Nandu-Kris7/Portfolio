@@ -11,12 +11,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 		<!-- SEO -->
-		<meta name="description" content="Nandu Krishna R — Computer Engineering Master's student focusing on Machine Learning, Robotics, and Embedded Systems. Projects include real-time risk intelligence, humanoid vision navigation, and embedded pose-based attention analysis." />
+		<meta
+			name="description"
+			content="Nandu Krishna R — Computer Engineering Master's student focusing on Machine Learning, Robotics, and Embedded Systems. Projects include real-time risk intelligence, humanoid vision navigation, energy consumption prediction, student performance prediction, and embedded pose-based attention analysis."
+		/>
 		<meta name="author" content="Nandu Krishna R" />
 
 		<!-- Open Graph -->
 		<meta property="og:title" content="Nandu Krishna R | ML • Robotics • Embedded Systems" />
-		<meta property="og:description" content="Portfolio: real-time ML systems, robotics demos, and embedded projects." />
+		<meta
+			property="og:description"
+			content="Portfolio: machine learning, real-time ML systems, robotics demos, and embedded projects."
+		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:image" content="images/Insp.jpg" />
 
@@ -27,6 +33,7 @@
 
 		<style>
 			/* Tiny accessibility + layout helpers without touching your main CSS */
+
 			.skip-link {
 				position: absolute;
 				top: -40px;
@@ -35,14 +42,18 @@
 				padding: 10px 12px;
 				z-index: 9999;
 				border-radius: 6px;
-				box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 				transition: top 0.2s ease;
 			}
-			.skip-link:focus { top: 10px; }
+
+			.skip-link:focus {
+				top: 10px;
+			}
 
 			.hero-bullets {
 				margin: 0.75rem 0 1.25rem 0;
 			}
+
 			.hero-bullets li {
 				margin-bottom: 0.35rem;
 			}
@@ -51,26 +62,28 @@
 			.posts article .actions {
 				margin-top: 0.75rem;
 			}
-			/* Keep the name on one line (desktop/tablet) */
-			.hero-title{
-			white-space: nowrap;
-			font-size: clamp(2.2rem, 4.2vw, 4.6rem); /* scales so it fits */
-			line-height: 1.05;
+
+			/* Keep the name on one line on desktop/tablet */
+			.hero-title {
+				white-space: nowrap;
+				font-size: clamp(2.2rem, 4.2vw, 4.6rem);
+				line-height: 1.05;
 			}
 
 			/* Allow wrapping on smaller screens to avoid overflow */
-			@media (max-width: 980px){
-			.hero-title{
-				white-space: normal;
+			@media (max-width: 980px) {
+				.hero-title {
+					white-space: normal;
+				}
 			}
-			}
-
 		</style>
 	</head>
 
 	<body class="is-preload">
+
 		<a class="skip-link" href="#main-content">Skip to content</a>
 
+		<!-- Particle Background -->
 		<div id="particles-js"></div>
 
 		<!-- Dark Mode Toggle -->
@@ -87,9 +100,13 @@
 
 			// Load saved preference
 			const darkPref = localStorage.getItem('dark-mode') === 'true';
+
 			if (darkPref) {
 				body.classList.add('dark-mode');
-				if (toggle) toggle.checked = true;
+
+				if (toggle) {
+					toggle.checked = true;
+				}
 			}
 
 			// Toggle handler
@@ -101,362 +118,1211 @@
 			}
 		</script>
 
+
 		<div id="wrapper">
+
 			<!-- Main -->
 			<div id="main">
+
 				<div class="inner" id="main-content">
+
 
 					<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo"><strong>Portfolio</strong> Nandu Krishna R</a>
+
+						<a href="index.html" class="logo">
+							<strong>Portfolio</strong> Nandu Krishna R
+						</a>
+
 						<ul class="icons">
+
 							<li>
-								<a href="https://www.linkedin.com/in/nandu-krishna-r/" class="icon brands fa-linkedin" aria-label="LinkedIn">
+								<a
+									href="https://www.linkedin.com/in/nandu-krishna-r/"
+									class="icon brands fa-linkedin"
+									aria-label="LinkedIn"
+								>
 									<span class="label">LinkedIn</span>
 								</a>
 							</li>
+
 							<li>
-								<a href="https://github.com/Nandu-Kris7" class="icon brands fa-github" aria-label="GitHub">
+								<a
+									href="https://github.com/Nandu-Kris7"
+									class="icon brands fa-github"
+									aria-label="GitHub"
+								>
 									<span class="label">Github</span>
 								</a>
 							</li>
+
 							<li>
-								<a href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" class="icon brands fa-instagram" aria-label="Instagram">
+								<a
+									href="https://www.instagram.com/cypher_.7?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr"
+									class="icon brands fa-instagram"
+									aria-label="Instagram"
+								>
 									<span class="label">Instagram</span>
 								</a>
 							</li>
+
 						</ul>
+
 					</header>
+
 
 					<!-- Banner -->
 					<section id="banner">
+
 						<div class="content">
+
 							<header>
-								<h1 class="hero-title">Hi, I’m Nandu Krishna R</h1>
-								<p>Computer Engineering Master’s Candidate @ CSUN • ML • Robotics • Embedded Systems</p>
+
+								<h1 class="hero-title">
+									Hi, I’m Nandu Krishna R
+								</h1>
+
+								<p>
+									Computer Engineering Master’s Candidate @ CSUN • ML • Robotics • Embedded Systems
+								</p>
+
 							</header>
 
+
 							<p style="text-align: justify;">
-								I build systems that don’t just “work in theory” — I like shipping demos you can run, test, and improve.
-								My focus is Machine Learning, but I also spend a lot of time in robotics + embedded work: ROS, sensors,
-								vision pipelines, and hardware-software integration.
+
+								I build systems that don’t just “work in theory” — I like shipping demos
+								you can run, test, and improve. My focus is Machine Learning, but I also
+								spend a lot of time in robotics + embedded work: ROS, sensors, vision
+								pipelines, and hardware-software integration.
+
 							</p>
 
+
 							<ul class="hero-bullets">
-								<li><strong>Risk-X:</strong> real-time anomaly scoring + drift-aware adaptation on Azure</li>
-								<li><strong>Ainex humanoid:</strong> safety-first vision → decision → ROS motion primitives loop</li>
-								<li><strong>Embedded CV:</strong> real-time pose-based attention analysis on Raspberry Pi</li>
+
+								<li>
+									<strong>Risk-X:</strong>
+									real-time anomaly scoring + drift-aware adaptation on Azure
+								</li>
+
+								<li>
+									<strong>Ainex humanoid:</strong>
+									safety-first vision → decision → ROS motion primitives loop
+								</li>
+
+								<li>
+									<strong>Embedded CV:</strong>
+									real-time pose-based attention analysis on Raspberry Pi
+								</li>
+
+								<li>
+									<strong>Machine Learning:</strong>
+									energy consumption + student performance prediction
+								</li>
+
 							</ul>
+
 
 							<ul class="actions">
-								<li><a href="Resume.html" class="button primary big">Resume</a></li>
-								<li><a href="#projects" class="button big">Projects</a></li>
-								<li><a href="#contact" class="button big">Contact</a></li>
+
+								<li>
+									<a href="Resume.html" class="button primary big">
+										Resume
+									</a>
+								</li>
+
+								<li>
+									<a href="#projects" class="button big">
+										Projects
+									</a>
+								</li>
+
+								<li>
+									<a href="#contact" class="button big">
+										Contact
+									</a>
+								</li>
+
 							</ul>
+
 						</div>
 
+
 						<span class="image object">
-							<img src="images/Insp.jpg" alt="Nandu Krishna R — ML, Robotics, Embedded Systems" />
+
+							<img
+								src="images/Insp.jpg"
+								alt="Nandu Krishna R — ML, Robotics, Embedded Systems"
+							/>
+
 						</span>
+
 					</section>
 
-					<!-- Projects -->
+
+
+					<!-- ================================================= -->
+					<!-- PROJECTS -->
+					<!-- ================================================= -->
+
 					<section id="projects">
+
 						<header class="major">
 							<h2>Projects</h2>
 						</header>
 
+
 						<div class="posts">
+
+
+							<!-- Risk-X -->
 							<article>
-								<a href="Risk-X_Real_Time_Risk_Intelligence.html" class="image">
-									<img src="images/thumbnail riskx.png" alt="Risk-X thumbnail" />
+
+								<a
+									href="Risk-X_Real_Time_Risk_Intelligence.html"
+									class="image"
+								>
+									<img
+										src="images/thumbnail riskx.png"
+										alt="Risk-X thumbnail"
+									/>
 								</a>
-								<h3>Risk-X: Real-Time Risk Intelligence</h3>
+
+
+								<h3>
+									Risk-X: Real-Time Risk Intelligence
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Cloud-native streaming system for transaction risk monitoring: online anomaly scoring, drift detection,
-									and automatic threshold/model adaptation for stable alerting.
+
+									Cloud-native streaming system for transaction risk monitoring:
+									online anomaly scoring, drift detection, and automatic
+									threshold/model adaptation for stable alerting.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="Risk-X_Real_Time_Risk_Intelligence.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="Risk-X_Real_Time_Risk_Intelligence.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
 
+
+
+							<!-- Ainex Vision Navigation -->
 							<article>
-								<a href="ainex_vision_nav.html" class="image">
-									<img src="images/ChatGPT Image Feb 8, 2026, 11_58_48 AM.png" alt="Ainex vision navigation thumbnail" />
+
+								<a
+									href="ainex_vision_nav.html"
+									class="image"
+								>
+
+									<img
+										src="images/ChatGPT Image Feb 8, 2026, 11_58_48 AM.png"
+										alt="Ainex vision navigation thumbnail"
+									/>
+
 								</a>
-								<h3>Ainex Vision Navigation</h3>
+
+
+								<h3>
+									Ainex Vision Navigation
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Safety-first humanoid navigation demo: camera frame → VLM decision → one controlled ROS motion primitive.
+
+									Safety-first humanoid navigation demo:
+									camera frame → VLM decision → one controlled ROS motion primitive.
 									Conservative defaults, predictable behavior, easy debugging.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="ainex_vision_nav.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="ainex_vision_nav.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
 
+
+
+							<!-- Pose Attention Analysis -->
 							<article>
-								<a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html" class="image">
-									<img src="images/Thumbnail.png" alt="Pose-based attention analysis thumbnail" />
+
+								<a
+									href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html"
+									class="image"
+								>
+
+									<img
+										src="images/Thumbnail.png"
+										alt="Pose-based attention analysis thumbnail"
+									/>
+
 								</a>
-								<h3>Real-Time Pose-Based Attention Analysis</h3>
+
+
+								<h3>
+									Real-Time Pose-Based Attention Analysis
+								</h3>
+
+
 								<p style="text-align: justify;">
-									On-device pose estimation + interpretable attention heuristics running in real time on a Raspberry Pi.
-									Logged 10k+ frames for future learning-based upgrades.
+
+									On-device pose estimation + interpretable attention heuristics
+									running in real time on a Raspberry Pi. Logged 10k+ frames for
+									future learning-based upgrades.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
 
+
+
+							<!-- Welkin Aves -->
 							<article>
-								<a href="Welkin Aves.html" class="image">
-									<img src="images/Welkin Aves.png" alt="Welkin Aves thumbnail" />
+
+								<a
+									href="Welkin Aves.html"
+									class="image"
+								>
+
+									<img
+										src="images/Welkin Aves.png"
+										alt="Welkin Aves thumbnail"
+									/>
+
 								</a>
-								<h3>Welkin Aves</h3>
+
+
+								<h3>
+									Welkin Aves
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Co-founded a drone battery-swapping prototype project: CAD + hardware integration + control systems.
-									Supported by incubators and recognized at Idea Fest events.
+
+									Co-founded a drone battery-swapping prototype project:
+									CAD + hardware integration + control systems. Supported by
+									incubators and recognized at Idea Fest events.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="Welkin Aves.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="Welkin Aves.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
 
+
+
+							<!-- Flight Price Prediction -->
 							<article>
-								<a href="Flight_Price_Prediction.html" class="image">
-									<img src="images/Flight Price Prediction.jpeg" alt="Flight price prediction thumbnail" />
+
+								<a
+									href="Flight_Price_Prediction.html"
+									class="image"
+								>
+
+									<img
+										src="images/Flight Price Prediction.jpeg"
+										alt="Flight price prediction thumbnail"
+									/>
+
 								</a>
-								<h3>Flight Price Prediction</h3>
+
+
+								<h3>
+									Flight Price Prediction
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Random Forest regression with feature engineering + evaluation (MAE/RMSE/R²) to predict flight prices.
-									Includes feature importance analysis.
+
+									Random Forest regression with feature engineering + evaluation
+									(MAE/RMSE/R²) to predict flight prices. Includes feature
+									importance analysis.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="Flight_Price_Prediction.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="Flight_Price_Prediction.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
 
+
+
+							<!-- Customer Spending Prediction -->
 							<article>
-								<a href="Customer_Spending_Prediction_Using_Machine_Learning.html" class="image">
-									<img src="images/customer Project thumbnail.png" alt="Customer spending prediction thumbnail" />
+
+								<a
+									href="Customer_Spending_Prediction_Using_Machine_Learning.html"
+									class="image"
+								>
+
+									<img
+										src="images/customer Project thumbnail.png"
+										alt="Customer spending prediction thumbnail"
+									/>
+
 								</a>
-								<h3>Customer Spending Prediction</h3>
+
+
+								<h3>
+									Customer Spending Prediction
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Linear regression on e-commerce behavior metrics to predict yearly spending and interpret which features
-									drive purchases.
+
+									Linear regression on e-commerce behavior metrics to predict
+									yearly spending and interpret which features drive purchases.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="Customer_Spending_Prediction_Using_Machine_Learning.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
 
+
+
+							<!-- ============================================= -->
+							<!-- NEW: Building Energy Consumption Prediction -->
+							<!-- ============================================= -->
+
 							<article>
-								<a href="Drug Classifier.html" class="image">
-									<img src="images/Drug Classification.png.png" alt="Drug classifier thumbnail" />
+
+								<a
+									href="Energy_Consumption_Prediction.html"
+									class="image"
+								>
+
+									<img
+										src="images/energy-prediction.png"
+										alt="Building energy consumption prediction thumbnail"
+									/>
+
 								</a>
-								<h3>Drug Classification</h3>
+
+
+								<h3>
+									Building Energy Consumption Prediction
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Decision tree classifier for prescription prediction with preprocessing, cross-validation,
-									hyperparameter testing, and model visualization.
+
+									Multiple linear regression model for predicting building energy
+									consumption from structural, occupancy, environmental, and
+									categorical features. Includes categorical encoding, coefficient
+									interpretation, baseline comparison, and regression evaluation.
+
 								</p>
+
+
 								<ul class="actions">
-									<li><a href="Drug Classifier.html" class="button">Learn More</a></li>
+
+									<li>
+										<a
+											href="Energy_Consumption_Prediction.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
 								</ul>
+
 							</article>
+
+
+
+							<!-- ============================================= -->
+							<!-- NEW: Student Performance Prediction -->
+							<!-- ============================================= -->
+
+							<article>
+
+								<a
+									href="Student_Performance_Prediction.html"
+									class="image"
+								>
+
+									<img
+										src="images/student-analysis.png"
+										alt="Student performance prediction thumbnail"
+									/>
+
+								</a>
+
+
+								<h3>
+									Student Performance Prediction
+								</h3>
+
+
+								<p style="text-align: justify;">
+
+									Machine learning model for predicting student exam performance
+									using study habits, attendance, internet access, and previous
+									grades. Explores preprocessing, data leakage prevention,
+									baseline comparison, coefficient interpretation, and regression
+									evaluation.
+
+								</p>
+
+
+								<ul class="actions">
+
+									<li>
+										<a
+											href="Student_Performance_Prediction.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
+								</ul>
+
+							</article>
+
+
+
+							<!-- Drug Classification -->
+							<article>
+
+								<a
+									href="Drug Classifier.html"
+									class="image"
+								>
+
+									<img
+										src="images/Drug Classification.png.png"
+										alt="Drug classifier thumbnail"
+									/>
+
+								</a>
+
+
+								<h3>
+									Drug Classification
+								</h3>
+
+
+								<p style="text-align: justify;">
+
+									Decision tree classifier for prescription prediction with
+									preprocessing, cross-validation, hyperparameter testing,
+									and model visualization.
+
+								</p>
+
+
+								<ul class="actions">
+
+									<li>
+										<a
+											href="Drug Classifier.html"
+											class="button"
+										>
+											Learn More
+										</a>
+									</li>
+
+								</ul>
+
+							</article>
+
+
 						</div>
+
 					</section>
 
-					<!-- Certificates -->
+
+
+					<!-- ================================================= -->
+					<!-- CERTIFICATES -->
+					<!-- ================================================= -->
+
 					<section id="certificates">
+
 						<header class="major">
 							<h2>Certificates</h2>
 						</header>
 
+
 						<div class="posts">
+
+
+							<!-- IBM -->
 							<article>
-								<a href="#" class="image"><img src="images/IBM Data Science Coursera-1.png" alt="IBM Data Science certificate" /></a>
-								<h3>IBM Data Science</h3>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/IBM Data Science Coursera-1.png"
+										alt="IBM Data Science certificate"
+									/>
+
+								</a>
+
+
+								<h3>
+									IBM Data Science
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Hands-on data science workflow: Python, SQL, visualization, ML foundations, and a capstone project.
+
+									Hands-on data science workflow: Python, SQL, visualization,
+									ML foundations, and a capstone project.
+
 								</p>
+
 							</article>
 
+							
+
+							<!-- Python -->
 							<article>
-								<a href="#" class="image"><img src="images/Python sololearn.jpg" alt="Python Core certificate" /></a>
-								<h3>Python Core</h3>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/Python sololearn.jpg"
+										alt="Python Core certificate"
+									/>
+
+								</a>
+
+
+								<h3>
+									Python Core
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Core Python fundamentals including data structures, algorithms, and object-oriented programming.
+
+									Core Python fundamentals including data structures,
+									algorithms, and object-oriented programming.
+
 								</p>
+
 							</article>
 
-							<article>
-								<a href="#" class="image"><img src="images/GCF Global Excel-1.png" alt="Excel certificate" /></a>
-								<h3>Excel</h3>
+							<!-- CS50 PYTHON -->
+							<article class="cs50-certificates">
+
+								<!-- Verified edX / Harvard Certificate -->
+								<a href="#" class="image">
+									<img
+										src="images/cs50_ver.png"
+										alt="HarvardX verified certificate for CS50's Introduction to Programming with Python"
+									/>
+								</a>
+
+								<!-- Regular CS50 Certificate -->
+								<a href="#" class="image">
+									<img
+										src="images/CS50P.png"
+										alt="CS50 certificate for Introduction to Programming with Python"
+									/>
+								</a>
+
+								<h3>CS50's Introduction to Programming with Python</h3>
+
 								<p style="text-align: justify;">
-									Data organization, analysis, and visualization using formulas, pivot tables, and charts.
+									Completed Harvard’s CS50’s Introduction to Programming with Python,
+									earning both the CS50 course certificate and the HarvardX verified
+									certificate. The course strengthened my foundation in Python,
+									problem-solving, debugging, file handling, regular expressions,
+									object-oriented programming, testing, and writing clean,
+									maintainable code through hands-on exercises and projects.
 								</p>
+
 							</article>
 
+							<!-- Excel -->
 							<article>
-								<a href="#" class="image"><img src="images/ML for beginners.JPEG" alt="ML for Beginners certificate" /></a>
-								<h3>ML for Beginners</h3>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/GCF Global Excel-1.png"
+										alt="Excel certificate"
+									/>
+
+								</a>
+
+
+								<h3>
+									Excel
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Intro ML concepts: supervised/unsupervised learning, preprocessing, training, and evaluation workflows.
+
+									Data organization, analysis, and visualization using
+									formulas, pivot tables, and charts.
+
 								</p>
+
 							</article>
+
+
+
+							<!-- ML Beginners -->
+							<article>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/ML for beginners.JPEG"
+										alt="ML for Beginners certificate"
+									/>
+
+								</a>
+
+
+								<h3>
+									ML for Beginners
+								</h3>
+
+
+								<p style="text-align: justify;">
+
+									Intro ML concepts: supervised/unsupervised learning,
+									preprocessing, training, and evaluation workflows.
+
+								</p>
+
+							</article>
+
+
 						</div>
+
 					</section>
 
-					<!-- Achievements -->
+
+
+					<!-- ================================================= -->
+					<!-- ACHIEVEMENTS -->
+					<!-- ================================================= -->
+
 					<section id="achievements">
+
 						<header class="major">
 							<h2>Achievements</h2>
 						</header>
 
+
 						<div class="posts">
+
+
+							<!-- Idea Fest 2021 -->
 							<article>
-								<a href="#" class="image"><img src="images/DIL_4207.JPG" alt="Idea Fest 2021" /></a>
-								<h3>Winner — IDEA FEST 2021</h3>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/DIL_4207.JPG"
+										alt="Idea Fest 2021"
+									/>
+
+								</a>
+
+
+								<h3>
+									Winner — IDEA FEST 2021
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Recognized for Welkin Aves; awarded a grant of 50,000 INR to support further development.
+
+									Recognized for Welkin Aves; awarded a grant of 50,000 INR
+									to support further development.
+
 								</p>
+
 							</article>
 
+
+
+							<!-- Idea Fest 2022 -->
 							<article>
-								<a href="#" class="image"><img src="images/DIL_4263.JPG" alt="Idea Fest 2022" /></a>
-								<h3>Winner — IDEA FEST 2022</h3>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/DIL_4263.JPG"
+										alt="Idea Fest 2022"
+									/>
+
+								</a>
+
+
+								<h3>
+									Winner — IDEA FEST 2022
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Awarded a grant of 2,50,000 INR to advance the prototype toward real deployment.
+
+									Awarded a grant of 2,50,000 INR to advance the prototype
+									toward real deployment.
+
 								</p>
+
 							</article>
 
+
+
+							<!-- Skill Connect -->
 							<article>
-								<a href="#" class="image"><img src="images/logo.png" alt="Skill Connect 2018" /></a>
-								<h3>1st Place — Skill Connect 2018</h3>
+
+								<a href="#" class="image">
+
+									<img
+										src="images/logo.png"
+										alt="Skill Connect 2018"
+									/>
+
+								</a>
+
+
+								<h3>
+									1st Place — Skill Connect 2018
+								</h3>
+
+
 								<p style="text-align: justify;">
-									Placed first in a competitive coding / problem-solving event held across engineering campuses in Kerala.
+
+									Placed first in a competitive coding / problem-solving
+									event held across engineering campuses in Kerala.
+
 								</p>
+
 							</article>
+
+
 						</div>
+
 					</section>
 
+
 				</div>
+
 			</div>
 
-			<!-- Sidebar -->
-			<div id="sidebar">
+
+
+			<!-- ================================================= -->
+			<!-- SIDEBAR -->
+			<!-- ================================================= -->
+
+			<div id="sidebar" class="inactive">
+
 				<div class="inner">
+
 
 					<!-- Search -->
 					<section id="search" class="alt">
+
 						<form method="post" action="#">
-							<input type="text" name="query" id="query" placeholder="Search" />
+
+							<input
+								type="text"
+								name="query"
+								id="query"
+								placeholder="Search"
+							/>
+
 						</form>
+
 					</section>
+
+
 
 					<!-- Menu -->
 					<nav id="menu">
+
 						<header class="major">
 							<h2>Menu</h2>
 						</header>
+
+
 						<ul>
-							<li><a href="index.html">Homepage</a></li>
-							<li><a href="Resume.html">Resume</a></li>
+
 							<li>
-								<span class="opener">Projects</span>
-								<ul>
-									<li><a href="Risk-X_Real_Time_Risk_Intelligence.html">Risk-X: Real-Time Risk Intelligence</a></li>
-									<li><a href="Welkin Aves.html">Welkin Aves</a></li>
-									<li><a href="ainex_vision_nav.html">Ainex Vision Navigation</a></li>
-									<li><a href="Flight_Price_Prediction.html">Flight Price Prediction</a></li>
-									<li><a href="Customer_Spending_Prediction_Using_Machine_Learning.html">Customer Spending Prediction</a></li>
-									<li><a href="Drug Classifier.html">Drug Classification</a></li>
-									<li><a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">Pose-Based Attention Analysis</a></li>
-								</ul>
+								<a href="index.html">
+									Homepage
+								</a>
 							</li>
+
+
+							<li>
+								<a href="Resume.html">
+									Resume
+								</a>
+							</li>
+
+
+							<li>
+
+								<span class="opener">
+									Projects
+								</span>
+
+
+								<ul>
+
+									<li>
+										<a href="Risk-X_Real_Time_Risk_Intelligence.html">
+											Risk-X: Real-Time Risk Intelligence
+										</a>
+									</li>
+
+
+									<li>
+										<a href="Welkin Aves.html">
+											Welkin Aves
+										</a>
+									</li>
+
+
+									<li>
+										<a href="ainex_vision_nav.html">
+											Ainex Vision Navigation
+										</a>
+									</li>
+
+
+									<li>
+										<a href="Flight_Price_Prediction.html">
+											Flight Price Prediction
+										</a>
+									</li>
+
+
+									<li>
+										<a href="Customer_Spending_Prediction_Using_Machine_Learning.html">
+											Customer Spending Prediction
+										</a>
+									</li>
+
+
+									<!-- NEW -->
+									<li>
+										<a href="Energy_Consumption_Prediction.html">
+											Building Energy Consumption Prediction
+										</a>
+									</li>
+
+
+									<!-- NEW -->
+									<li>
+										<a href="Student_Performance_Prediction.html">
+											Student Performance Prediction
+										</a>
+									</li>
+
+
+									<li>
+										<a href="Drug Classifier.html">
+											Drug Classification
+										</a>
+									</li>
+
+
+									<li>
+										<a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">
+											Pose-Based Attention Analysis
+										</a>
+									</li>
+
+								</ul>
+
+							</li>
+
 						</ul>
+
 					</nav>
+
+
 
 					<!-- Contact -->
 					<section id="contact">
+
 						<header class="major">
 							<h2>Get in touch</h2>
 						</header>
+
+
 						<p style="text-align: justify;">
-							If you want to collaborate, chat about projects, or talk opportunities, I’m easy to reach:
+
+							If you want to collaborate, chat about projects,
+							or talk opportunities, I’m easy to reach:
+
 						</p>
+
+
 						<ul class="contact">
+
 							<li class="icon solid fa-envelope">
-								<a href="mailto:nandukris7@outlook.com">nandukris7@outlook.com</a>
+
+								<a href="mailto:nandukris7@outlook.com">
+									nandukris7@outlook.com
+								</a>
+
 							</li>
+
+
 							<li class="icon brands fa-linkedin">
-								<a href="https://www.linkedin.com/in/nandu-krishna-r/">LinkedIn</a>
+
+								<a href="https://www.linkedin.com/in/nandu-krishna-r/">
+									LinkedIn
+								</a>
+
 							</li>
+
+
 							<li class="icon brands fa-github">
-								<a href="https://github.com/Nandu-Kris7">GitHub</a>
+
+								<a href="https://github.com/Nandu-Kris7">
+									GitHub
+								</a>
+
 							</li>
+
+
 							<li class="icon solid fa-map-marker-alt">
+
 								Northridge, CA (open to relocate / remote)
+
 							</li>
+
 						</ul>
+
 					</section>
+
+
 
 					<!-- Footer -->
 					<footer id="footer">
+
 						<p class="copyright">
-							&copy; All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.
+
+							&copy; All rights reserved.
+							Design:
+							<a href="https://html5up.net">
+								HTML5 UP
+							</a>.
+
 						</p>
+
 					</footer>
 
+
 				</div>
+
 			</div>
+
 
 		</div>
 
-		<!-- Scripts -->
+
+
+		<!-- ================================================= -->
+		<!-- SCRIPTS -->
+		<!-- ================================================= -->
+
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
+
+
+		<!-- Particle Background -->
 		<script>
+
 			particlesJS("particles-js", {
+
 				particles: {
-					number: { value: 80, density: { enable: true, value_area: 800 } },
-					color: { value: "#330099" },
-					shape: { type: "circle" },
-					opacity: { value: 0.5 },
-					size: { value: 3, random: true },
+
+					number: {
+						value: 80,
+						density: {
+							enable: true,
+							value_area: 800
+						}
+					},
+
+					color: {
+						value: "#330099"
+					},
+
+					shape: {
+						type: "circle"
+					},
+
+					opacity: {
+						value: 0.5
+					},
+
+					size: {
+						value: 3,
+						random: true
+					},
+
 					line_linked: {
+
 						enable: true,
+
 						distance: 150,
+
 						color: "#33CC99",
+
 						opacity: 0.6,
+
 						width: 2
+
 					},
+
 					move: {
+
 						enable: true,
+
 						speed: 2,
+
 						direction: "none",
+
 						out_mode: "out"
+
 					}
+
 				},
+
+
 				interactivity: {
+
 					detect_on: "canvas",
+
 					events: {
-						onhover: { enable: true, mode: "grab" },
-						onclick: { enable: true, mode: "push" },
+
+						onhover: {
+							enable: true,
+							mode: "grab"
+						},
+
+						onclick: {
+							enable: true,
+							mode: "push"
+						},
+
 						resize: true
+
 					},
+
+
 					modes: {
-						grab: { distance: 140, line_linked: { opacity: 0.5 } },
-						push: { particles_nb: 4 }
+
+						grab: {
+
+							distance: 140,
+
+							line_linked: {
+								opacity: 0.5
+							}
+
+						},
+
+						push: {
+							particles_nb: 4
+						}
+
 					}
+
 				},
+
+
 				retina_detect: true
+
 			});
+
 		</script>
+
+
 	</body>
 </html>

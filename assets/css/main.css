@@ -2105,23 +2105,128 @@ button,
 
 /* Banner */
 #banner {
-  padding: 6em 0 4em 0 ;
+  padding: 6em 0 4em 0;
   display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
-  display: flex; }
-  #banner h1 {
-    margin-top: -0.125em; }
+  display: flex;
+  align-items: center;
+  gap: 4em;
+}
+
+#banner h1 {
+  margin-top: -0.125em;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Let the text column shrink when the image is beside it.
+   min-width: 0 is important: without it, a large heading can force
+   the image/text columns to overlap inside a flex container. */
+#banner .content {
+  -moz-flex-grow: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -moz-flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-shrink: 1;
+  flex-shrink: 1;
+  flex-basis: 60%;
+  width: auto;
+  min-width: 0;
+}
+
+/* Keep the quote image in its own column instead of allowing it to
+   consume half of the banner regardless of the available space. */
+#banner .image {
+  -moz-flex-grow: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-grow: 0;
+  flex-grow: 0;
+  -moz-flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-shrink: 1;
+  flex-shrink: 1;
+  flex-basis: 36%;
+  display: block;
+  margin: 0;
+  width: 36%;
+  max-width: 500px;
+}
+
+#banner .image img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+  -moz-object-fit: contain;
+  -webkit-object-fit: contain;
+  -ms-object-fit: contain;
+  object-fit: contain;
+  -moz-object-position: center;
+  -webkit-object-position: center;
+  -ms-object-position: center;
+  object-position: center;
+}
+
+/* The heading in index.html uses .hero-title.
+   Override its nowrap behavior here so it cannot run underneath the image. */
+#banner .hero-title {
+  white-space: normal !important;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  line-height: 1.08;
+  max-width: 100%;
+}
+
+/* Medium desktop / laptop widths */
+@media screen and (max-width: 1200px) {
+  #banner {
+    gap: 2.5em;
+  }
+
   #banner .content {
-    -moz-flex-grow: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-grow: 1;
-    flex-grow: 1;
-    -moz-flex-shrink: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-shrink: 1;
-    flex-shrink: 1;
-    width: 50%; }
+    flex-basis: 58%;
+  }
+
+  #banner .image {
+    flex-basis: 38%;
+    width: 38%;
+    max-width: 430px;
+  }
+
+  #banner .hero-title {
+    font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  }
+}
+
+/* Stack the quote above the text once horizontal space becomes tight. */
+@media screen and (max-width: 980px), screen and (orientation: portrait) {
+  #banner {
+    -moz-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  #banner h1 br {
+    display: none;
+  }
+
+  #banner .content {
+    -moz-flex-grow: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+    -moz-flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-shrink: 0;
+    flex-shrink: 0;
+    width: 100%;
+  }
+
   #banner .image {
     -moz-flex-grow: 0;
     -webkit-flex-grow: 0;
@@ -2131,55 +2236,28 @@ button,
     -webkit-flex-shrink: 0;
     -ms-flex-shrink: 0;
     flex-shrink: 0;
-    display: block;
-    margin: 0 0 2em 4em;
-    width: 50%; }
-    #banner .image img {
-      height: 100%;
-      -moz-object-fit: cover;
-      -webkit-object-fit: cover;
-      -ms-object-fit: cover;
-      object-fit: cover;
-      -moz-object-position: center;
-      -webkit-object-position: center;
-      -ms-object-position: center;
-      object-position: center;
-      width: 100%; }
-  @media screen and (orientation: portrait) {
-    #banner {
-      -moz-flex-direction: column-reverse;
-      -webkit-flex-direction: column-reverse;
-      -ms-flex-direction: column-reverse;
-      flex-direction: column-reverse; }
-      #banner h1 br {
-        display: none; }
-      #banner .content {
-        -moz-flex-grow: 0;
-        -webkit-flex-grow: 0;
-        -ms-flex-grow: 0;
-        flex-grow: 0;
-        -moz-flex-shrink: 0;
-        -webkit-flex-shrink: 0;
-        -ms-flex-shrink: 0;
-        flex-shrink: 0;
-        width: 100%; }
-      #banner .image {
-        -moz-flex-grow: 0;
-        -webkit-flex-grow: 0;
-        -ms-flex-grow: 0;
-        flex-grow: 0;
-        -moz-flex-shrink: 0;
-        -webkit-flex-shrink: 0;
-        -ms-flex-shrink: 0;
-        flex-shrink: 0;
-        margin: 0 0 4em 0;
-        height: 25em;
-        max-height: 50vh;
-        min-height: 18em;
-        width: 100%; } }
-  @media screen and (orientation: portrait) and (max-width: 480px) {
-    #banner .image {
-      max-height: 35vh; } }
+    margin: 0 auto 3em auto;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    width: min(100%, 500px);
+  }
+
+  #banner .hero-title {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #banner .image {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  #banner .hero-title {
+    font-size: 2.2rem;
+  }
+}
 
 /* Footer */
 #footer .copyright {
@@ -2440,4 +2518,105 @@ body.dark-mode #menu .opener:hover {
   #main > .inner {
     padding: 0 2em 0.1em 2em;
   }
+}
+/* =========================================
+   CS50 DUAL CERTIFICATES
+   ========================================= */
+.certificate-copy {
+    margin-bottom: 1.5rem;
+}
+
+.certificate-copy .image {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.certificate-copy .image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.certificate-label {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #33cc99;
+}
+/* =========================================================
+   CERTIFICATES - MASONRY LAYOUT
+   Removes blank vertical spaces caused by unequal card heights
+   ========================================================= */
+
+#certificates .posts {
+	display: block;
+	column-count: 3;
+	column-gap: 3em;
+	margin: 0;
+	width: 100%;
+}
+
+#certificates .posts article {
+	display: inline-block;
+	width: 100%;
+	margin: 0 0 3em 0;
+	padding: 0 0 3em 0;
+	break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+}
+
+/* Remove HTML5 UP's original grid separator lines */
+#certificates .posts article::before,
+#certificates .posts article::after {
+	display: none !important;
+}
+
+/* Certificate images */
+#certificates .posts article .image {
+	display: block;
+	width: 100%;
+	margin-bottom: 1.5em;
+}
+
+#certificates .posts article .image img {
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+
+/* -------------------------
+   Tablet
+   ------------------------- */
+
+@media screen and (max-width: 1280px) {
+
+	#certificates .posts {
+		column-count: 2;
+		column-gap: 2.5em;
+	}
+
+}
+
+
+/* -------------------------
+   Mobile
+   ------------------------- */
+
+@media screen and (max-width: 736px) {
+
+	#certificates .posts {
+		column-count: 1;
+	}
+
+	#certificates .posts article {
+		margin-bottom: 2.5em;
+		padding-bottom: 2.5em;
+	}
+
 }

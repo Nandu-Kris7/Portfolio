@@ -1,0 +1,1049 @@
+<!DOCTYPE HTML>
+<!--
+  Editorial by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license
+  (html5up.net/license)
+-->
+<html lang="en">
+
+<head>
+  <title>Building Energy Consumption Prediction | Linear Regression</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <meta
+    name="description"
+    content="Predicting building energy consumption using linear regression, categorical encoding, baseline comparison, and model evaluation with scikit-learn."
+  />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/project-extras.css" />
+
+  <link
+    rel="icon"
+    href="images/favicon/favicon.ico"
+    type="image/x-icon"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+
+<body class="is-preload">
+
+  <!-- Accessibility -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Particle background -->
+  <div id="particles-js"></div>
+
+  <!-- Dark Mode Toggle -->
+  <div class="dark-toggle">
+    <label class="switch">
+      <input type="checkbox" id="toggle-dark-mode">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('toggle-dark-mode');
+    const body = document.body;
+
+    const darkPref = localStorage.getItem('dark-mode') === 'true';
+
+    if (darkPref) {
+      body.classList.add('dark-mode');
+
+      if (toggle) {
+        toggle.checked = true;
+      }
+    }
+
+    if (toggle) {
+      toggle.addEventListener('change', () => {
+        body.classList.toggle('dark-mode', toggle.checked);
+
+        localStorage.setItem(
+          'dark-mode',
+          toggle.checked
+        );
+      });
+    }
+  </script>
+
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+
+    <!-- Main -->
+    <div id="main">
+
+      <div class="inner" id="main-content">
+
+
+        <!-- Header -->
+        <header id="header">
+
+          <a href="index.html" class="logo">
+            <strong>Portfolio</strong> Nandu Krishna R
+          </a>
+
+          <ul class="icons">
+
+            <li>
+              <a
+                href="https://www.linkedin.com/in/nandu-krishna-r/"
+                class="icon brands fa-linkedin"
+                aria-label="LinkedIn"
+              >
+                <span class="label">LinkedIn</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://github.com/Nandu-Kris7"
+                class="icon brands fa-github"
+                aria-label="GitHub"
+              >
+                <span class="label">GitHub</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.instagram.com/cypher_.7"
+                class="icon brands fa-instagram"
+                aria-label="Instagram"
+              >
+                <span class="label">Instagram</span>
+              </a>
+            </li>
+
+          </ul>
+
+        </header>
+
+
+        <!-- Project -->
+        <section>
+
+          <header class="main">
+
+            <h1>Building Energy Consumption Prediction</h1>
+
+            <p class="subtitle">
+              Machine Learning • Multiple Linear Regression • Energy Analytics
+            </p>
+
+          </header>
+
+
+          <!-- Hero Image -->
+          <span class="image project-hero">
+
+            <img
+              src="images/energy-consumption-thumbnail.png"
+              alt="Building energy consumption prediction project"
+              loading="lazy"
+            />
+
+          </span>
+
+
+          <!-- Introduction -->
+          <p style="text-align: justify;">
+
+            This project uses machine learning to predict the energy consumption
+            of buildings based on characteristics such as square footage,
+            number of occupants, appliances used, average temperature,
+            building type, and whether the observation occurs on a weekday
+            or weekend.
+
+            The project was created as a hands-on exploration of the complete
+            regression workflow, including data exploration, categorical
+            encoding, train/test splitting, model training, coefficient
+            interpretation, baseline comparison, and model evaluation.
+
+          </p>
+
+
+          <!-- TLDR -->
+          <div class="tldr">
+
+
+            <div class="box">
+
+              <h3>TL;DR</h3>
+
+              <p style="text-align: justify;">
+
+                A multiple linear regression model that predicts building
+                energy consumption using structural, occupancy, environmental,
+                and categorical features.
+
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>My Role</h3>
+
+              <p style="text-align: justify;">
+
+                Built the complete machine learning workflow:
+                data exploration → categorical encoding → train/test split →
+                linear regression → coefficient interpretation →
+                model evaluation → baseline comparison.
+
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Tech</h3>
+
+              <div class="tags">
+
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">Matplotlib</span>
+                <span class="tag">Seaborn</span>
+                <span class="tag">Jupyter</span>
+
+              </div>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Links</h3>
+
+              <div class="actions inline">
+
+                <a
+                  href="https://github.com/Nandu-Kris7/Energy_consumption_prediction"
+                  class="button small"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Repo
+                </a>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <hr class="major" />
+
+
+          <!-- Overview -->
+          <h2>Overview</h2>
+
+          <p style="text-align: justify;">
+
+            The dataset contains 100 building records. The target variable is
+            <strong>Energy Consumption</strong>, while the input features
+            describe the building, its occupancy, environmental conditions,
+            and the day type.
+
+            The goal was not only to produce predictions but also to understand
+            how each feature contributes to the model and how categorical
+            variables should be represented correctly before training a linear
+            regression model.
+
+          </p>
+
+
+          <!-- Features -->
+          <h2>Features Used</h2>
+
+          <ul>
+
+            <li>
+              <strong>Square Footage:</strong>
+              Size of the building.
+            </li>
+
+            <li>
+              <strong>Number of Occupants:</strong>
+              Number of people occupying the building.
+            </li>
+
+            <li>
+              <strong>Appliances Used:</strong>
+              Number of appliances operating within the building.
+            </li>
+
+            <li>
+              <strong>Average Temperature:</strong>
+              Environmental temperature associated with the observation.
+            </li>
+
+            <li>
+              <strong>Building Type:</strong>
+              Categorical feature representing the building category.
+            </li>
+
+            <li>
+              <strong>Day of Week:</strong>
+              Indicates whether the observation occurred on a weekday
+              or weekend.
+            </li>
+
+          </ul>
+
+
+          <!-- Workflow -->
+          <h2>Workflow</h2>
+
+          <ul>
+
+            <li>
+              <strong>Data exploration:</strong>
+              Inspected the dataset structure, column data types,
+              missing values, distributions, and relationships between
+              variables.
+            </li>
+
+            <li>
+              <strong>Feature / target separation:</strong>
+              Energy Consumption was selected as the prediction target,
+              while the remaining columns were used as input features.
+            </li>
+
+            <li>
+              <strong>Categorical preprocessing:</strong>
+              Converted categorical values into numerical representations
+              suitable for linear regression.
+            </li>
+
+            <li>
+              <strong>Train/test split:</strong>
+              Used an 80/20 split with a fixed random state so model
+              performance could be evaluated on unseen data.
+            </li>
+
+            <li>
+              <strong>Model training:</strong>
+              Trained a multiple linear regression model using
+              scikit-learn.
+            </li>
+
+            <li>
+              <strong>Evaluation:</strong>
+              Measured performance using Mean Squared Error,
+              Mean Absolute Error, and R².
+            </li>
+
+            <li>
+              <strong>Baseline comparison:</strong>
+              Compared the trained model against a simple predictor that
+              always returns the average training-set energy consumption.
+            </li>
+
+          </ul>
+
+
+          <!-- Encoding -->
+          <h2>Categorical Feature Encoding</h2>
+
+          <p style="text-align: justify;">
+
+            Two features in the dataset are categorical:
+            <strong>Building Type</strong> and
+            <strong>Day of Week</strong>.
+
+          </p>
+
+
+          <h3>Day of Week</h3>
+
+          <p style="text-align: justify;">
+
+            Because this feature contains only two possible values,
+            it was mapped directly into a binary numerical representation.
+
+          </p>
+
+          <pre><code>df["Day of Week"] = df["Day of Week"].map({
+    "Weekday": 0,
+    "Weekend": 1
+})</code></pre>
+
+
+          <h3>Building Type</h3>
+
+          <p style="text-align: justify;">
+
+            I initially experimented with category codes, but assigning
+            values such as 0, 1, and 2 can introduce a false numerical
+            relationship between categories.
+
+            Instead, the building type was converted using
+            <strong>one-hot encoding</strong>.
+
+          </p>
+
+          <pre><code>df = pd.get_dummies(
+    df,
+    columns=["Building Type"],
+    drop_first=True,
+    dtype=int
+)</code></pre>
+
+
+          <p style="text-align: justify;">
+
+            Using <code>drop_first=True</code> removes one dummy column
+            and uses that category as the reference category, avoiding
+            redundant features.
+
+          </p>
+
+
+          <!-- Model -->
+          <h2>Linear Regression Model</h2>
+
+          <p style="text-align: justify;">
+
+            The dataset was split into training and testing subsets,
+            with 20% of the data reserved for testing.
+
+          </p>
+
+          <pre><code>X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=33
+)</code></pre>
+
+
+          <p style="text-align: justify;">
+
+            A scikit-learn Linear Regression model was then trained using
+            the training dataset.
+
+          </p>
+
+          <pre><code>model = LinearRegression()
+
+model.fit(X_train, y_train)
+
+prediction = model.predict(X_test)</code></pre>
+
+
+          <!-- Coefficients -->
+          <h2>Interpreting Model Coefficients</h2>
+
+          <p style="text-align: justify;">
+
+            One of the useful properties of linear regression is that the
+            learned coefficients provide a direct way to examine how each
+            feature influences the prediction.
+
+          </p>
+
+          <p>
+            The model learned approximate relationships such as:
+          </p>
+
+          <ul>
+
+            <li>
+              <strong>Square Footage:</strong>
+              approximately +0.05 energy units per additional square foot.
+            </li>
+
+            <li>
+              <strong>Number of Occupants:</strong>
+              approximately +10 units per additional occupant.
+            </li>
+
+            <li>
+              <strong>Appliances Used:</strong>
+              approximately +20 units per additional appliance.
+            </li>
+
+            <li>
+              <strong>Average Temperature:</strong>
+              approximately -5 units for each degree increase.
+            </li>
+
+            <li>
+              <strong>Day of Week:</strong>
+              approximately -50 units when moving from weekday
+              to weekend.
+            </li>
+
+          </ul>
+
+
+          <p style="text-align: justify;">
+
+            The unusually clean coefficients suggest that the dataset
+            follows a very strong underlying linear relationship.
+
+          </p>
+
+
+          <!-- Evaluation -->
+          <h2>Model Evaluation</h2>
+
+          <p style="text-align: justify;">
+
+            Model performance was evaluated using three common regression
+            metrics.
+
+          </p>
+
+
+          <div class="tldr">
+
+            <div class="box">
+
+              <h3>MSE</h3>
+
+              <p>
+                ≈ <strong>0.00029</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>MAE</h3>
+
+              <p>
+                ≈ <strong>0.0147</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>R²</h3>
+
+              <p>
+                ≈ <strong>1.00</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <p style="text-align: justify;">
+
+            The model fits this dataset extremely closely. An R² value
+            near 1 means that almost all of the variation in energy
+            consumption in the test dataset is explained by the linear
+            regression model.
+
+            However, this result should not be interpreted as evidence
+            that linear regression would perform equally well on
+            real-world energy datasets. The data used here appears to
+            contain an almost perfectly linear relationship.
+
+          </p>
+
+
+          <!-- Baseline -->
+          <h2>Baseline Comparison</h2>
+
+          <p style="text-align: justify;">
+
+            To make the model evaluation more meaningful, I compared it
+            against a simple baseline.
+
+            The baseline predicts the mean energy consumption of the
+            training dataset for every test observation.
+
+          </p>
+
+          <pre><code>baseline_value = y_train.mean()
+
+baseline_predictions = [
+    baseline_value
+] * len(y_test)</code></pre>
+
+
+          <div class="tldr">
+
+            <div class="box">
+
+              <h3>Baseline MSE</h3>
+
+              <p>
+                ≈ <strong>762,800</strong>
+              </p>
+
+            </div>
+
+
+            <div class="box">
+
+              <h3>Linear Regression MSE</h3>
+
+              <p>
+                ≈ <strong>0.00029</strong>
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <p style="text-align: justify;">
+
+            The large difference between the baseline and the trained model
+            demonstrates that the selected features contain a very strong
+            predictive signal within this dataset.
+
+          </p>
+
+
+          <!-- Media -->
+      <h2>Media</h2>
+
+          <div class="media-grid">
+
+            <figure class="media-item">
+              <img
+                src="images/energy_consumption_actual_vs_predited.png"
+                alt="Predicted versus actual energy consumption"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Predicted versus actual energy consumption. Predictions close to
+                the diagonal indicate strong agreement between the model and the
+                test data.
+              </figcaption>
+            </figure>
+
+            <figure class="media-item">
+              <img
+                src="images/distribution_energy_consumption.png"
+                alt="Distribution of energy consumption in the dataset"
+                loading="lazy"
+              />
+
+              <figcaption>
+                Distribution of energy consumption in the dataset. The
+                distribution is approximately normal, with a slight right
+                skew.
+              </figcaption>
+            </figure>
+            
+
+          </div>
+
+
+          <!-- Lessons -->
+          <h2>What I Learned</h2>
+
+          <ul>
+
+            <li>
+              Exploring datasets using Pandas before model training.
+            </li>
+
+            <li>
+              Separating predictor variables from the prediction target.
+            </li>
+
+            <li>
+              Handling categorical data for regression models.
+            </li>
+
+            <li>
+              The difference between binary encoding and one-hot encoding.
+            </li>
+
+            <li>
+              Why arbitrary numerical category codes can introduce
+              misleading relationships.
+            </li>
+
+            <li>
+              Creating reproducible train/test splits.
+            </li>
+
+            <li>
+              Building and evaluating multiple linear regression models.
+            </li>
+
+            <li>
+              Interpreting regression coefficients.
+            </li>
+
+            <li>
+              Understanding MAE, MSE, and R².
+            </li>
+
+            <li>
+              Comparing a trained model against a simple baseline.
+            </li>
+
+            <li>
+              Recognizing that unusually perfect performance should be
+              investigated rather than automatically treated as proof
+              of a great model.
+            </li>
+
+          </ul>
+
+
+          <hr class="major" />
+
+
+          <!-- Repository -->
+          <h2>Repository</h2>
+
+          <p style="text-align: justify;">
+
+            View the notebook, dataset, analysis, and source code on GitHub:
+
+            <a
+              href="https://github.com/Nandu-Kris7/Energy_consumption_prediction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Building Energy Consumption Prediction
+            </a>
+
+          </p>
+
+
+        </section>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+
+      <div class="inner">
+
+
+        <!-- Search -->
+        <section id="search" class="alt">
+
+          <form method="post" action="#">
+
+            <input
+              type="text"
+              name="query"
+              id="query"
+              placeholder="Search"
+            />
+
+          </form>
+
+        </section>
+
+
+        <!-- Menu -->
+        <nav id="menu">
+
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+
+          <ul>
+
+            <li>
+              <a href="index.html">Homepage</a>
+            </li>
+
+            <li>
+              <a href="Resume.html">Resume</a>
+            </li>
+
+            <li>
+
+              <span class="opener">Projects</span>
+
+              <ul>
+
+                <li>
+                  <a href="Risk-X_Real_Time_Risk_Intelligence.html">
+                    Risk-X: Real-Time Risk Intelligence
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Welkin Aves.html">
+                    Welkin Aves
+                  </a>
+                </li>
+
+                <li>
+                  <a href="ainex_vision_nav.html">
+                    Ainex Vision Navigation
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Flight_Price_Prediction.html">
+                    Flight Price Prediction
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Customer_Spending_Prediction_Using_Machine_Learning.html">
+                    Customer Spending Prediction
+                  </a>
+                </li>
+
+                <!-- NEW PROJECT -->
+                <li>
+                  <a href="Energy_Consumption_Prediction.html">
+                    Building Energy Consumption Prediction
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Drug Classifier.html">
+                    Drug Classification
+                  </a>
+                </li>
+
+                <li>
+                  <a href="Real-Time Pose-Based Attention Analysis on Raspberry Pi.html">
+                    Pose-Based Attention Analysis
+                  </a>
+                </li>
+                <li><a href="Student_Performance_Prediction.html">Student Performance Prediction</a></li>
+
+              </ul>
+
+            </li>
+
+          </ul>
+
+        </nav>
+
+
+        <!-- Contact -->
+        <section id="contact">
+
+          <header class="major">
+            <h2>Get in touch</h2>
+          </header>
+
+          <p style="text-align: justify;">
+
+            Want to collaborate, talk opportunities, or nerd out about a
+            project? Email works best.
+
+          </p>
+
+          <ul class="contact">
+
+            <li class="icon solid fa-envelope">
+
+              <a href="mailto:nandukris7@outlook.com">
+                nandukris7@outlook.com
+              </a>
+
+            </li>
+
+            <li class="icon brands fa-linkedin">
+
+              <a
+                href="https://www.linkedin.com/in/nandu-krishna-r/"
+              >
+                LinkedIn
+              </a>
+
+            </li>
+
+            <li class="icon brands fa-github">
+
+              <a
+                href="https://github.com/Nandu-Kris7"
+              >
+                GitHub
+              </a>
+
+            </li>
+
+            <li class="icon solid fa-map-marker-alt">
+
+              Northridge, CA (open to relocate / remote)
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer id="footer">
+
+          <p class="copyright">
+
+            © All rights reserved.
+            Design:
+            <a href="https://html5up.net">
+              HTML5 UP
+            </a>.
+
+          </p>
+
+        </footer>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- Template Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+  <!-- Particles -->
+  <script>
+
+    particlesJS("particles-js", {
+
+      particles: {
+
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+
+        color: {
+          value: "#330099"
+        },
+
+        shape: {
+          type: "circle"
+        },
+
+        opacity: {
+          value: 0.5
+        },
+
+        size: {
+          value: 3,
+          random: true
+        },
+
+        line_linked: {
+
+          enable: true,
+
+          distance: 150,
+
+          color: "#33CC99",
+
+          opacity: 0.6,
+
+          width: 2
+
+        },
+
+        move: {
+
+          enable: true,
+
+          speed: 2,
+
+          direction: "none",
+
+          out_mode: "out"
+
+        }
+
+      },
+
+
+      interactivity: {
+
+        detect_on: "canvas",
+
+        events: {
+
+          onhover: {
+            enable: true,
+            mode: "grab"
+          },
+
+          onclick: {
+            enable: true,
+            mode: "push"
+          },
+
+          resize: true
+
+        },
+
+
+        modes: {
+
+          grab: {
+
+            distance: 140,
+
+            line_linked: {
+              opacity: 0.5
+            }
+
+          },
+
+          push: {
+
+            particles_nb: 4
+
+          }
+
+        }
+
+      },
+
+
+      retina_detect: true
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>ss

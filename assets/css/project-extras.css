@@ -124,3 +124,46 @@
   font-size: 0.95em;
   opacity: 0.9;
 }
+/* Project graphs / media images */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+.media-item {
+    margin: 0;
+    width: 100%;
+}
+
+.media-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+
+    /* IMPORTANT: show the whole graph without cropping */
+    object-fit: contain;
+
+    object-position: center;
+    border-radius: 0.5rem;
+}
+
+.media-item figcaption {
+    margin-top: 0.75rem;
+    line-height: 1.6;
+}
+
+/* Stack plots vertically on smaller screens */
+@media screen and (max-width: 980px) {
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .media-item img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
+}
